@@ -1,5 +1,0 @@
-D:\Dev\GitHub\AdventOfCode\helloserve.com.AdventOfCode\bin\Debug\helloserve.com.AdventOfCode.dll
-D:\Dev\GitHub\AdventOfCode\helloserve.com.AdventOfCode\bin\Debug\helloserve.com.AdventOfCode.pdb
-D:\Dev\GitHub\AdventOfCode\helloserve.com.AdventOfCode\obj\Debug\helloserve.com.AdventOfCode.csprojResolveAssemblyReference.cache
-D:\Dev\GitHub\AdventOfCode\helloserve.com.AdventOfCode\obj\Debug\helloserve.com.AdventOfCode.dll
-D:\Dev\GitHub\AdventOfCode\helloserve.com.AdventOfCode\obj\Debug\helloserve.com.AdventOfCode.pdb
