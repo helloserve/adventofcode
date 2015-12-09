@@ -235,6 +235,14 @@ namespace helloserve.com.AdventOfCode.Test
             int result = Verses.Day6_Part2(input);
             Assert.IsTrue(result == 17836115);
         }
+
+        [TestMethod]
+        public void TestDay7_Part1_Example1()
+        {
+            //string input = "123 -> x";
+            //int result = Verses.Day7_Part1(input, "x");
+            //Assert.IsTrue(result == 123);
+        }
     }
 }
 
