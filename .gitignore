@@ -1,0 +1,18 @@
+# Compiled Object files
+*.obj
+*.bin
+bin*
+obj*
+
+# Compiled Dynamic libraries
+*.dll
+
+# Executables
+*.exe
+*.out
+*.app
+
+#Solution and other
+*.suo
+*.user
+packages
