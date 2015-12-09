@@ -254,5 +254,10 @@ namespace helloserve.com.AdventOfCode
 
             return grid.NumberOfLightsOn;
         }
+
+        public static int Day7_Part1(string input, string wireToReport)
+        {
+
+        }
     }
 }

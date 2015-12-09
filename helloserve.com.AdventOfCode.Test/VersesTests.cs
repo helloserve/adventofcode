@@ -239,9 +239,9 @@ namespace helloserve.com.AdventOfCode.Test
         [TestMethod]
         public void TestDay7_Part1_Example1()
         {
-            //string input = "123 -> x";
-            //int result = Verses.Day7_Part1(input, "x");
-            //Assert.IsTrue(result == 123);
+            string input = "123 -> x";
+            int result = Verses.Day7_Part1(input, "x");
+            Assert.IsTrue(result == 123);
         }
     }
 }

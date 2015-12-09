@@ -46,6 +46,10 @@
     <Compile Include="Models\Day5\NiceString.cs" />
     <Compile Include="Models\Day6\BrightGrid.cs" />
     <Compile Include="Models\Day6\LightGrid.cs" />
+    <Compile Include="Models\Day7\Circuit.cs" />
+    <Compile Include="Models\Day7\Gate.cs" />
+    <Compile Include="Models\Day7\Input.cs" />
+    <Compile Include="Models\Day7\Wire.cs" />
     <Compile Include="Verses.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
