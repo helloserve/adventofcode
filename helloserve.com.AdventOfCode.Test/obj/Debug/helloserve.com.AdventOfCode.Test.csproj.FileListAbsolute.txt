@@ -1,0 +1,13 @@
+D:\Dev\GitHub\AdventOfCode\helloserve.com.AdventOfCode.Test\bin\Debug\helloserve.com.AdventOfCode.Test.dll
+D:\Dev\GitHub\AdventOfCode\helloserve.com.AdventOfCode.Test\bin\Debug\helloserve.com.AdventOfCode.Test.pdb
+D:\Dev\GitHub\AdventOfCode\helloserve.com.AdventOfCode.Test\bin\Debug\helloserve.com.AdventOfCode.dll
+D:\Dev\GitHub\AdventOfCode\helloserve.com.AdventOfCode.Test\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+D:\Dev\GitHub\AdventOfCode\helloserve.com.AdventOfCode.Test\bin\Debug\helloserve.com.AdventOfCode.pdb
+D:\Dev\GitHub\AdventOfCode\helloserve.com.AdventOfCode.Test\obj\Debug\helloserve.com.AdventOfCode.Test.csprojResolveAssemblyReference.cache
+D:\Dev\GitHub\AdventOfCode\helloserve.com.AdventOfCode.Test\obj\Debug\helloserve.com.AdventOfCode.Test.dll
+D:\Dev\GitHub\AdventOfCode\helloserve.com.AdventOfCode.Test\obj\Debug\helloserve.com.AdventOfCode.Test.pdb
+D:\Dev\GitHub\AdventOfCode\helloserve.com.AdventOfCode.Test\bin\Debug\Input\day1.txt
+D:\Dev\GitHub\AdventOfCode\helloserve.com.AdventOfCode.Test\bin\Debug\Input\day2.txt
+D:\Dev\GitHub\AdventOfCode\helloserve.com.AdventOfCode.Test\bin\Debug\Input\day3.txt
+D:\Dev\GitHub\AdventOfCode\helloserve.com.AdventOfCode.Test\bin\Debug\Input\day5.txt
+D:\Dev\GitHub\AdventOfCode\helloserve.com.AdventOfCode.Test\bin\Debug\Input\day6.txt
