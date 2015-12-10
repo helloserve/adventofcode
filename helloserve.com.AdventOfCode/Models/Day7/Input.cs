@@ -8,7 +8,20 @@ namespace helloserve.com.AdventOfCode.Models.Day7
 {
     public abstract class Input
     {
-        public abstract int Output { get; }
+        public string Instruction { get; set; }
+
+        protected abstract int GetOutput();
+
+        private int? _output;
+        public int Output
+        {
+            get
+            {
+                if (!_output.HasValue)
+                    _output = GetOutput();
+                return _output.Value;
+            }
+        }
     }
 
     public class Signal : Input
@@ -19,12 +32,9 @@ namespace helloserve.com.AdventOfCode.Models.Day7
             _value = value;
         }
 
-        public override int Output
+        protected override int GetOutput()
         {
-            get
-            {
-                return _value;
-            }
+            return _value;
         }
     }
 }

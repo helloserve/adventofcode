@@ -2,6 +2,7 @@
 using helloserve.com.AdventOfCode.Models.Day3;
 using helloserve.com.AdventOfCode.Models.Day5;
 using helloserve.com.AdventOfCode.Models.Day6;
+using helloserve.com.AdventOfCode.Models.Day7;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -257,7 +258,9 @@ namespace helloserve.com.AdventOfCode
 
         public static int Day7_Part1(string input, string wireToReport)
         {
-
+            string[] diagram = input.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
+            Circuit circuit = new Circuit(diagram, wireToReport);
+            return circuit.Output;
         }
     }
 }

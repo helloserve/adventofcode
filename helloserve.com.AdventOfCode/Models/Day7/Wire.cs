@@ -6,12 +6,15 @@ using System.Threading.Tasks;
 
 namespace helloserve.com.AdventOfCode.Models.Day7
 {
-    public class Wire
+    public class Wire : Input
     {
         public string Name { get; set; }
 
         public Input Input { get; set; }
 
-        public int Output { get; }
+        protected override int GetOutput()
+        {
+            return Input.Output;
+        }
     }
 }

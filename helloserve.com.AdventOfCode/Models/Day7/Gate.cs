@@ -6,34 +6,34 @@ using System.Threading.Tasks;
 
 namespace helloserve.com.AdventOfCode.Models.Day7
 {
-    public abstract class Gate: Input
+    public abstract class Gate : Input
     {
-        public static Gate GetGate(string gate, Wire input1, Wire input2, string constant)
+        public static Gate GetGate(string gate, Input input1, Input input2, string constant1, string constant2)
         {
             switch (gate)
             {
                 case "AND":
-                    return new AndGate(input1, input2);
+                    return new AndGate(input1 ?? new Signal(int.Parse(constant1)), input2 ?? new Signal(int.Parse(constant2)));
                 case "OR":
-                    return new OrGate(input1, input2);
+                    return new OrGate(input1 ?? new Signal(int.Parse(constant1)), input2 ?? new Signal(int.Parse(constant2)));
                 case "NOT":
-                    return new NotGate(input1, null);
+                    return new NotGate(input1 ?? new Signal(int.Parse(constant1)), null);
                 case "LSHIFT":
-                    return new LShiftGate(constant);
+                    return new LShiftGate(input1, constant2);
                 case "RSHIFT":
-                    return new RShiftGate(constant);
+                    return new RShiftGate(input1, constant2);
                 default:
-                    throw new ArgumentException();
+                    return null;
             }
         }
 
-        public Wire Input1 { get; set; }
-        public Wire Input2 { get; set; }        
+        public Input Input1 { get; set; }
+        public Input Input2 { get; set; }
     }
 
     public abstract class LogicGate : Gate
     {
-        public LogicGate(Wire input1, Wire input2)
+        public LogicGate(Input input1, Input input2)
         {
             Input1 = input1;
             Input2 = input2;
@@ -42,40 +42,31 @@ namespace helloserve.com.AdventOfCode.Models.Day7
 
     public class AndGate : LogicGate
     {
-        public AndGate(Wire input1, Wire input2) : base(input1, input2) { }
+        public AndGate(Input input1, Input input2) : base(input1, input2) { }
 
-        public override int Output
+        protected override int GetOutput()
         {
-            get
-            {
-                return Input1.Output & Input2.Output;
-            }
+            return Input1.Output & Input2.Output;
         }
     }
 
     public class OrGate : LogicGate
     {
-        public OrGate(Wire input1, Wire input2) : base(input1, input2) { }
+        public OrGate(Input input1, Input input2) : base(input1, input2) { }
 
-        public override int Output
+        protected override int GetOutput()
         {
-            get
-            {
-                return Input1.Output | Input2.Output;
-            }
+            return Input1.Output | Input2.Output;
         }
     }
 
     public class NotGate : LogicGate
     {
-        public NotGate(Wire input1, Wire input2) : base(input1, input2) { }
+        public NotGate(Input input1, Input input2) : base(input1, input2) { }
 
-        public override int Output
+        protected override int GetOutput()
         {
-            get
-            {
-                return ~Input1.Output;
-            }
+            return ~Input1.Output;
         }
     }
 
@@ -83,35 +74,30 @@ namespace helloserve.com.AdventOfCode.Models.Day7
     {
         protected int _shiftConstant;
 
-        public ShiftGate(string constant)
+        public ShiftGate(Input input, string constant)
         {
+            Input1 = input;
             _shiftConstant = int.Parse(constant);
         }
     }
 
     public class RShiftGate : ShiftGate
     {
-        public RShiftGate(string constant) : base(constant) { }
+        public RShiftGate(Input input, string constant) : base(input, constant) { }
 
-        public override int Output
+        protected override int GetOutput()
         {
-            get
-            {
-                return Input1.Output >> _shiftConstant;
-            }
+            return Input1.Output >> _shiftConstant;
         }
     }
 
     public class LShiftGate : ShiftGate
     {
-        public LShiftGate(string constant) : base(constant) { }
+        public LShiftGate(Input input, string constant) : base(input, constant) { }
 
-        public override int Output
+        protected override int GetOutput()
         {
-            get
-            {
-                return Input1.Output << _shiftConstant;
-            }
+            return Input1.Output << _shiftConstant;
         }
     }
 }
