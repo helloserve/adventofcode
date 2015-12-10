@@ -13,10 +13,10 @@ Named for the verses of the song "The Twelve Days of Christmas", the ```Verses``
 The input is parsed one character at a time, essentially increasing or decreasing a variable based on a switch statement. The first part always reads the last entry in the result, the second part scans through it until it finds level -1.
 
 ###Day 2
-Simple process to parse all the dimensions in a loop. The loop instantiates a '''Present''' object for each interation, which knows how to calculate it's own wrapping and lint areas.
+Simple process to parse all the dimensions in a loop. The loop instantiates a ```Present``` object for each interation, which knows how to calculate it's own wrapping and lint areas.
 
 ###Day 3
-A bit more graph-theory here for doing house keeping. For part 1, a single '''House''' instance is referenced, but the instance keeps track of it's neighbours which are all indexed in a global list (passed as '''ref'''). Each instruction changes the referenced instance the newly discovered neighbour. Once the instruction set has been exhausted, the currently referenced instance recursively determines the number of houses that received at least one present by calling on all its neighbours. For part 2, two instances are referenced, executed and moved on in turn. Both instanced operate on the same global index thus avoiding duplicates, and the recursive method still works from either referenced instance.
+A bit more graph-theory here for doing house keeping. For part 1, a single ```House``` instance is referenced, but the instance keeps track of it's neighbours which are all indexed in a global list (passed as '''ref'''). Each instruction changes the referenced instance the newly discovered neighbour. Once the instruction set has been exhausted, the currently referenced instance recursively determines the number of houses that received at least one present by calling on all its neighbours. For part 2, two instances are referenced, executed and moved on in turn. Both instanced operate on the same global index thus avoiding duplicates, and the recursive method still works from either referenced instance.
 
 ###Day 4
 An MD5 implementation? I might still do that myself. Currently this just uses the .NET implementation and brute forces from a lower range of 100 000 up to a upper bound based on the length of the input.
