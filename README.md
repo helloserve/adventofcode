@@ -22,7 +22,7 @@ A bit more graph-theory here for doing house keeping. For part 1, a single ```Ho
 An MD5 implementation? I might still do that myself. Currently this just uses the .NET implementation and brute forces from a lower bound of 100 000 up to an upper bound based on the length of the input.
 
 ###Day 5
-Pretty straight forward string parsing. The implementation is based on keeping count of what it finds. ```NiceString``` is used in part 1, which defines some basic implementation, and then ```NicerString``` extends it and changes the criteria loop.
+Pretty straight forward string parsing. The implementation is based on keeping count of what it finds. ```NiceString``` is used in part 1, which defines some basic implementation, and then ```NicerString``` extends it and changes the criteria loop. I wanted to maintain an O(n) execution time, so the trick here was to walk through a string only once.
 
 ###Day 6
 This is a simple and pretty easy X,Y coordinate problem. Part 1 was initially based on an array of ```bool```, but part 2 changed that to ```int``` to account for the different brightness values. So, the ```LightGrid``` class defines the basics and knows to switch on, off or toggle, and the ```BrightGrid``` class extends that so that it knows to adjust the brightness.
