@@ -284,6 +284,25 @@ namespace helloserve.com.AdventOfCode.Test
             int result = Verses.Day7_Part1(input, "a");
             Assert.IsTrue(result == 16076);
         }
+
+        [TestMethod]
+        public void TestDay7_Part2_OverrideWireb()
+        {
+            string input = FromFile("day7.txt");
+            input += "\r\n16076 -> b";
+            int result = Verses.Day7_Part1(input, "b");
+            Assert.IsTrue(result == 16076);
+        }
+
+        [TestMethod]
+        public void TestDay7_Part2()
+        {
+            string input = FromFile("day7.txt");
+            input += "\r\n16076 -> b";
+            int result = Verses.Day7_Part1(input, "a");
+            Assert.IsTrue(result == 2797);
+        }
+
     }
 }
 

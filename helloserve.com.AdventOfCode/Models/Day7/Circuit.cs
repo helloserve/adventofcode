@@ -34,6 +34,8 @@ namespace helloserve.com.AdventOfCode.Models.Day7
                 string wire = parts[1].Trim();
                 if (!_instructions.ContainsKey(wire))
                     _instructions.Add(wire, parts[0].Trim());
+                else
+                    _instructions[wire] = parts[0].Trim();
             }
         }
 
