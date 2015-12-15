@@ -29,3 +29,6 @@ This is a simple and pretty easy X,Y coordinate problem. Part 1 was initially ba
 
 ###Day 7
 Now this was a tremendous puzzle. The instructions are rather complicated to parse, and the various permutations are not covered in the least by the problem description. Regardless, the solution sort-of emulates the circuit, but in a recursive way so as to only build what it needs to. The ```Circuit``` class indexes and processes the instructions recursively. The ```Wire```, ```Signal``` and all the extensions of ```Gate``` all extend a basic ```Input``` class which reads and stores it's output to stem the recursive flow. The various implementations are instantiated via regular expression conditions and setup in a graph structure. Part 2 merely ensures that an instruction for a wire can be overrided by a new instruction.
+
+###Day 8
+I really struggled with this one. The difference between string literals and representations is all in the detail, and my unit tests weren't sensitive enough. Invalid input also played a role here. Even TTD didn't help me much here, since I got confused with the input.

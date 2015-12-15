@@ -262,5 +262,67 @@ namespace helloserve.com.AdventOfCode
             Circuit circuit = new Circuit(diagram, wireToReport);
             return circuit.Output;
         }
+
+        public static int Day8_Part1(string input)
+        {
+            string[] lines = input.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
+
+            int lengthDifference = 0;
+
+            for (int j = 0; j < lines.Length; j++)
+            {
+                int literalCount = 0;
+                int memoryCount = 0;
+                string line = lines[j];
+                line = line.Remove(0, 1);
+                line = line.Remove(line.Length - 1, 1);
+                for (int i = 0; i < line.Length; i++)
+                {
+                    char c = line[i];
+
+                    if (c == '\\')
+                    {
+                        if (i < line.Length - 1)
+                        {
+                            if (line[i + 1] == 'x')
+                            {
+                                if (i < line.Length - 3)
+                                {
+                                    Regex regex = new Regex(@"(?<ASCIICode>[a-f0-9]{2})");
+                                    Match match = regex.Match(line.Substring(i + 2, 2));
+                                    if (match.Success)
+                                    {
+                                        literalCount += 4;
+                                        memoryCount++;
+                                        i += 3;
+                                    }
+                                }
+                            }
+                            else if (line[i + 1] == '\\' || line[i + 1] == '\"')
+                            {
+                                literalCount += 2;
+                                memoryCount++;
+                                i++;
+                            }
+                            else
+                                return -1;
+                        }
+                    }
+                    else
+                    {
+                        if (c == '\"')
+                            return -1;
+
+                        literalCount++;
+                        memoryCount++;
+                    }
+                }
+
+
+                lengthDifference += literalCount + 2 - memoryCount;
+            }
+
+            return lengthDifference;
+        }
     }
 }
