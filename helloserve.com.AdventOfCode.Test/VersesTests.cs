@@ -8,7 +8,7 @@ namespace helloserve.com.AdventOfCode.Test
     [TestClass]
     public class VersesTests
     {
-        private string FromFile(string filename)
+        protected string FromFile(string filename)
         {
             return File.ReadAllText(Path.Combine(@".\Input", filename));
         }
@@ -301,86 +301,6 @@ namespace helloserve.com.AdventOfCode.Test
             input += "\r\n16076 -> b";
             int result = Verses.Day7_Part1(input, "a");
             Assert.IsTrue(result == 2797);
-        }
-
-        [TestMethod]
-        public void TestDay8_Part1_Example1()
-        {
-            string input = "\"\"";
-            int result = Verses.Day8_Part1(input);
-            Assert.IsTrue(result == 2);
-        }
-
-        [TestMethod]
-        public void TestDay8_Part1_Example2()
-        {
-            string input = "\"abc\"";
-            int result = Verses.Day8_Part1(input);
-            Assert.IsTrue(result == 2);
-        }
-
-        [TestMethod]
-        public void TestDay8_Part1_Example3()
-        {
-            string input = "\"aaa\\\"aaa\"";
-            int result = Verses.Day8_Part1(input);
-            Assert.IsTrue(result == 3);
-        }
-
-        [TestMethod]
-        public void TestDay8_Part1_Example4()
-        {
-            string input = "\"\\x27\"";
-            int result = Verses.Day8_Part1(input);
-            Assert.IsTrue(result == 5);
-        }
-
-        [TestMethod]
-        public void TestDay8_Part1_Slashes()
-        {
-            string input = "\"" + "\\\\\\x27" + "\"";
-            int result = Verses.Day8_Part1(input);
-            Assert.IsTrue(result == 6);
-        }
-
-        [TestMethod]
-        public void TestDay8_Part1_Everything_Invalid()
-        {
-            string input = "\"" + "\\\\\"\\x27" + "\"";
-            int result = Verses.Day8_Part1(input);
-            Assert.IsTrue(result == -1);
-        }
-
-        [TestMethod]
-        public void TestDay8_Part1_Everything_Valid()
-        {
-            string input = "\"" + "\\\\\\\"\\x27" + "\"";
-            int result = Verses.Day8_Part1(input);
-            Assert.IsTrue(result == 7);
-        }
-
-        [TestMethod]
-        public void TestDay8_Part1_InputLine2()
-        {
-            string input = "\"" + "v\\xfb\\\"lgs\\\"kvjfywmut\\x9cr" + "\"";
-            int result = Verses.Day8_Part1(input);
-            Assert.IsTrue(result == 10);
-        }
-
-        [TestMethod]
-        public void TestDay8_Part1_AllExamples()
-        {
-            string input = FromFile("day8_exampleAll.txt");
-            int result = Verses.Day8_Part1(input);
-            Assert.IsTrue(result == 12);
-        }
-
-        [TestMethod]
-        public void TestDay8_Part1()
-        {
-            string input = FromFile("day8.txt");
-            int result = Verses.Day8_Part1(input);
-            Assert.IsTrue(result == 1342);
         }
     }
 }

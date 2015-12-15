@@ -265,14 +265,36 @@ namespace helloserve.com.AdventOfCode
 
         public static int Day8_Part1(string input)
         {
+            int literalCount = 0;
+            int newLiteralCount = 0;
+            int memoryCount = 0;
+
+            Day8(input, out literalCount, out memoryCount, out newLiteralCount);
+
+            return literalCount - memoryCount;
+        }
+
+        public static int Day8_Part2(string input)
+        {
+            int literalCount = 0;
+            int newLiteralCount = 0;
+            int memoryCount = 0;
+
+            Day8(input, out literalCount, out memoryCount, out newLiteralCount);
+
+            return newLiteralCount - literalCount;
+        }
+
+        private static void Day8(string input, out int literalCount, out int memoryCount, out int newLiteralCount)
+        {
             string[] lines = input.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
 
-            int lengthDifference = 0;
+            literalCount = 0;
+            newLiteralCount = 0;
+            memoryCount = 0;
 
             for (int j = 0; j < lines.Length; j++)
             {
-                int literalCount = 0;
-                int memoryCount = 0;
                 string line = lines[j];
                 line = line.Remove(0, 1);
                 line = line.Remove(line.Length - 1, 1);
@@ -293,6 +315,7 @@ namespace helloserve.com.AdventOfCode
                                     if (match.Success)
                                     {
                                         literalCount += 4;
+                                        newLiteralCount += 5;
                                         memoryCount++;
                                         i += 3;
                                     }
@@ -301,28 +324,28 @@ namespace helloserve.com.AdventOfCode
                             else if (line[i + 1] == '\\' || line[i + 1] == '\"')
                             {
                                 literalCount += 2;
+                                newLiteralCount += 4;
                                 memoryCount++;
                                 i++;
                             }
                             else
-                                return -1;
+                                throw new InvalidOperationException();
                         }
                     }
                     else
                     {
                         if (c == '\"')
-                            return -1;
+                            throw new InvalidOperationException();
 
                         literalCount++;
+                        newLiteralCount++;
                         memoryCount++;
                     }
                 }
-
-
-                lengthDifference += literalCount + 2 - memoryCount;
             }
 
-            return lengthDifference;
+            literalCount += Math.Max(1, lines.Length) * 2;
+            newLiteralCount += Math.Max(1, lines.Length) * 6;
         }
     }
 }
