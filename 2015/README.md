@@ -1,5 +1,5 @@
-# adventofcode
-Solutions to the challanges on AdventOfCode.com
+# Advent Of Code
+Solutions to the challanges on http://adventofcode.com for 2015
 
 ## Unit Tests
 All the solutions are executed through unit tests.
