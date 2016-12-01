@@ -65,7 +65,19 @@ namespace helloserve.com.AdventOfCode.Tests
         [Fact]
         public void Part1_Part1()
         {
-            Assert.True(verses.Part1(ReadTextSource("1A.txt")) == 278);
+            Assert.True(verses.Part1(ReadTextSource("1.txt")) == 278);
+        }
+
+        [Fact]
+        public void Part2_Ex1()
+        {
+            Assert.True(verses.Part2("R8, R4, R4, R8") == 4);
+        }
+
+        [Fact]
+        public void Part2_Part2()
+        {
+            Assert.True(verses.Part2(ReadTextSource("1.txt")) == 161);
         }
     }
 }

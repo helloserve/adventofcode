@@ -43,36 +43,45 @@ namespace helloserve.com.AdventOfCode
             }
         }
 
-        public static Vector2 Move(this Vector2 position, char direction, int steps)
+        public static Vector2 Move(this Vector2 position, Vector2 direction, int steps)
         {
-            return direction.GetDirectionVector()
+            return direction
                 .Multiply(steps)
                 .Add(position);
         }
     }
 
-    public class Vector2
+    public class Vector2 : IEquatable<Vector2>
     {
         public int X { get; set; }
         public int Y { get; set; }
 
         public Vector2 Multiply(int scalar)
         {
-            X *= scalar;
-            Y *= scalar;
-            return this;
+            return new Vector2()
+            {
+                X = this.X *= scalar,
+                Y = this.Y *= scalar
+            };
         }
 
         public Vector2 Add(Vector2 vector)
         {
-            X += vector.X;
-            Y += vector.Y;
-            return this;
+            return new Vector2()
+            {
+                X = this.X += vector.X,
+                Y = this.Y += vector.Y
+            };
         }
 
         public int RectilinearDistance()
         {
             return Math.Abs(X) + Math.Abs(Y);
+        }
+
+        public bool Equals(Vector2 other)
+        {
+            return X.Equals(other.X) && Y.Equals(other.Y);
         }
 
         public static Vector2 Zero
@@ -119,9 +128,38 @@ namespace helloserve.com.AdventOfCode
                 int steps = int.Parse(command.Substring(1, command.Length - 1));
 
                 direction = direction.Turn(dir);
-                
 
-                position = position.Move(direction, steps);
+                position = position.Move(direction.GetDirectionVector(), steps);
+            }
+
+            return position.RectilinearDistance();
+        }
+
+        public int Part2(string input)
+        {
+            Vector2 position = Vector2.Zero;
+            List<Vector2> positions = new List<Vector2>();
+
+            char direction = 'N';
+
+            string[] commands = input.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+            for (int i = 0; i < commands.Length; i++)
+            {
+                string command = commands[i].Trim();
+                string dir = command.Substring(0, 1);
+                int steps = int.Parse(command.Substring(1, command.Length - 1));
+
+                direction = direction.Turn(dir);
+                Vector2 dirVector = direction.GetDirectionVector();
+                for (int j = 0; j < steps; j++)
+                {
+                    position = position.Move(dirVector, 1);
+                    if (positions.Any(v => v.Equals(position)))
+                        return position.RectilinearDistance();
+
+                    positions.Add(position);
+                }
+
             }
 
             return position.RectilinearDistance();
