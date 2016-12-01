@@ -2557,6 +2557,19 @@
         "runtime": {
           "lib/dotnet/xunit.runner.utility.dotnet.dll": {}
         }
+      },
+      "helloserve.com.AdventOfCode/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v1.6",
+        "dependencies": {
+          "NETStandard.Library": "1.6.0"
+        },
+        "compile": {
+          "netstandard1.6/helloserve.com.AdventOfCode.dll": {}
+        },
+        "runtime": {
+          "netstandard1.6/helloserve.com.AdventOfCode.dll": {}
+        }
       }
     }
   },
@@ -7573,12 +7586,18 @@
         "xunit.runner.utility.2.1.0.nupkg.sha512",
         "xunit.runner.utility.nuspec"
       ]
+    },
+    "helloserve.com.AdventOfCode/1.0.0": {
+      "type": "project",
+      "path": "../../src/helloserve.com.AdventOfCode/project.json",
+      "msbuildProject": "../../src/helloserve.com.AdventOfCode/helloserve.com.AdventOfCode.xproj"
     }
   },
   "projectFileDependencyGroups": {
     "": [
       "System.Runtime.Serialization.Primitives >= 4.1.1",
       "dotnet-test-xunit >= 1.0.0-rc2-192208-24",
+      "helloserve.com.AdventOfCode",
       "xunit >= 2.1.0"
     ],
     ".NETCoreApp,Version=v1.0": [
