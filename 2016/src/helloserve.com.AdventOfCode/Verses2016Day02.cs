@@ -11,7 +11,7 @@ namespace helloserve.com.AdventOfCode
 
         public int Part1(string input)
         {
-            string[][] keyPad = new string[][] { new string[] { "1", "2", "3" }, new string[]{ "4", "5", "6" }, new string[]{ "7", "8", "9" } };
+            string[][] keyPad = new string[][] { new string[] { "1", "2", "3" }, new string[] { "4", "5", "6" }, new string[] { "7", "8", "9" } };
             string[] commandLines = input.Split(new char[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
             int x = 1;
             int y = 1;
@@ -22,18 +22,30 @@ namespace helloserve.com.AdventOfCode
             {
                 foreach (char c in commandLines[i])
                 {
-                    switch(c)
+                    switch (c)
                     {
                         case 'U':
                         case 'u':
                             y--;
                             break;
+                        case 'D':
+                        case 'd':
+                            y++;
+                            break;
+                        case 'L':
+                        case 'l':
+                            x--;
+                            break;
+                        case 'R':
+                        case 'r':
+                            x++;
+                            break;
                     }
 
-                    y = Math.Max(0, Math.Min(y, keyPad.Length));
+                    y = Math.Max(0, Math.Min(y, keyPad.Length - 1));
+                    x = Math.Max(0, Math.Min(x, keyPad[0].Length - 1));
                 }
 
-                int buttonIndex = y * keyPad.Length + x;
                 string button = keyPad[y][x];
                 code = $"{code}{button}";
             }
