@@ -4,9 +4,9 @@ using Xunit;
 
 namespace helloserve.com.AdventOfCode.Tests
 {
-    public class Versus2016Day1 : TestClass
+    public class Verses2016Day01 : TestClass
     {
-        AdventOfCode.Versus2016Day1 verses = new AdventOfCode.Versus2016Day1();
+        AdventOfCode.Verses2016Day01 verses = new AdventOfCode.Verses2016Day01();
         
         [Fact]
         public void Part1_L0Zero() 

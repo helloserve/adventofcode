@@ -110,9 +110,9 @@ namespace helloserve.com.AdventOfCode
         }
     }
 
-    public class Versus2016Day1
+    public class Verses2016Day01
     {
-        public Versus2016Day1() { }
+        public Verses2016Day01() { }
 
         public int Part1(string input)
         {
