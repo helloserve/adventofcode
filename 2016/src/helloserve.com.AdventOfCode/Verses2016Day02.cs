@@ -9,12 +9,28 @@ namespace helloserve.com.AdventOfCode
     {
         public Verses2016Day02() { }
 
-        public int Part1(string input)
+        public string Part1(string input)
         {
             string[][] keyPad = new string[][] { new string[] { "1", "2", "3" }, new string[] { "4", "5", "6" }, new string[] { "7", "8", "9" } };
+            return Input(input, keyPad, 1, 1);
+        }
+
+        public string Part2(string input)
+        {
+            string[][] keyPad = new string[][]
+            {
+                new string[] { null, null, "1", null, null },
+                new string[] { null, "2", "3", "4", null },
+                new string[] { "5", "6", "7", "8", "9" },
+                new string[] { null, "A", "B", "C", null },
+                new string[] { null, null, "D", null, null }
+            };
+            return Input(input, keyPad, 0, 2);
+        }
+
+        private static string Input(string input, string[][] keyPad, int x, int y)
+        {
             string[] commandLines = input.Split(new char[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
-            int x = 1;
-            int y = 1;
 
             string code = string.Empty;
 
@@ -22,35 +38,46 @@ namespace helloserve.com.AdventOfCode
             {
                 foreach (char c in commandLines[i])
                 {
+                    int newx = x;
+                    int newy = y;
                     switch (c)
                     {
                         case 'U':
                         case 'u':
-                            y--;
+                            newy--;
                             break;
                         case 'D':
                         case 'd':
-                            y++;
+                            newy++;
                             break;
                         case 'L':
                         case 'l':
-                            x--;
+                            newx--;
                             break;
                         case 'R':
                         case 'r':
-                            x++;
+                            newx++;
                             break;
                     }
 
-                    y = Math.Max(0, Math.Min(y, keyPad.Length - 1));
-                    x = Math.Max(0, Math.Min(x, keyPad[0].Length - 1));
+                    newy = Math.Max(0, Math.Min(newy, keyPad.Length - 1));
+                    newx = Math.Max(0, Math.Min(newx, keyPad[newy].Length - 1));
+
+                    if (string.IsNullOrEmpty(keyPad[newy][newx]))
+                    {
+                        newx = x;
+                        newy = y;
+                    }
+
+                    x = newx;
+                    y = newy;
                 }
 
                 string button = keyPad[y][x];
                 code = $"{code}{button}";
             }
 
-            return int.Parse(code);
+            return code;
         }
     }
 }
