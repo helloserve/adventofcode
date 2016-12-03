@@ -4,7 +4,7 @@ using Xunit;
 
 namespace helloserve.com.AdventOfCode.Tests
 {
-    public class Verses2016Day01 : TestClass
+    public class Verses2016Day01Tests : TestClass
     {
         AdventOfCode.Verses2016Day01 verses = new AdventOfCode.Verses2016Day01();
         
