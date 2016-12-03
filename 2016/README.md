@@ -15,3 +15,7 @@ I must note that initially my `Vector2` class methods manipulated the instance i
 ### Day 2
 
 A much easier challenge than day 1 I think. It was easy to configure and work your way through a double array representation of the keypad. Part 2 simply required a broadening of the edge code to check for null values in the keypad configuration.
+
+### Day 3
+
+This challenge was really just a triangle class with the logical property. The part 2 twist regarding the input transformation was unexpected though - a good candicate for a map().fold() functional implementation.
