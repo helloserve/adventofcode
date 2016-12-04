@@ -19,3 +19,7 @@ A much easier challenge than day 1 I think. It was easy to configure and work yo
 ### Day 3
 
 This challenge was really just a triangle class with the logical property. The part 2 twist regarding the input transformation was unexpected though - a good candicate for a map().fold() functional implementation.
+
+### Day 4
+
+The first regular expression for this season, and another circular index clamping bit for part 2 for shifting the letters. Oh, and dumping the output to inspect the names.

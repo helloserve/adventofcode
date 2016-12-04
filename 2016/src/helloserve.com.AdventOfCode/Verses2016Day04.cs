@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
@@ -9,6 +11,7 @@ namespace helloserve.com.AdventOfCode
     public class Room
     {
         public int SectorId { get; set; }
+        public string Name { get; internal set; }
 
         private string _encryptedValue { get; set; }
         private List<CharacterOrder> _encryptedCharOrders { get; set; }
@@ -22,7 +25,7 @@ namespace helloserve.com.AdventOfCode
                 return;
 
             SectorId = int.Parse(match.Groups["sectorId"].Value);
-            _encryptedValue = match.Groups["encrypted"].Value.Replace("-", "");
+            _encryptedValue = match.Groups["encrypted"].Value;
             _checksum = match.Groups["checksum"].Value;
             Decrypt();
         }
@@ -41,24 +44,48 @@ namespace helloserve.com.AdventOfCode
             }
         }
 
+
         private void Decrypt()
         {
+            string decryptedValue = string.Empty;
             _encryptedCharOrders = new List<CharacterOrder>();
 
             Dictionary<char, CharacterOrder> orderLookup = new Dictionary<char, AdventOfCode.Room.CharacterOrder>();
 
+            int minChar = (int)'a';
+
             for (int i = 0; i < _encryptedValue.Length; i++)
             {
                 char c = _encryptedValue[i];
-                if (orderLookup.ContainsKey(c))
-                    orderLookup[c].Order++;
+                if (c != '-')
+                {
+                    if (orderLookup.ContainsKey(c))
+                        orderLookup[c].Order++;
+                    else
+                        orderLookup.Add(c, new CharacterOrder() { Character = c, Order = 1 });
+                }
+
+                if (c == '-')
+                {
+                    c = ' ';
+                }
                 else
-                    orderLookup.Add(c, new CharacterOrder() { Character = c, Order = 1 });
+                {
+                    int intChar = (((int)c + SectorId - minChar) % 26) + minChar;
+                    c = (char)intChar;
+                }
+
+                decryptedValue = $"{decryptedValue}{c}";
             }
 
             _encryptedCharOrders = orderLookup.Values.ToList();
             _encryptedCharOrders.Sort();
             _encryptedCharOrders = _encryptedCharOrders.Take(_checksum.Length).ToList();
+
+            if (decryptedValue.EndsWith(" "))
+                decryptedValue = decryptedValue.Remove(decryptedValue.Length - 1, 1);
+
+            Name = decryptedValue;
         }
 
         private class CharacterOrder : IComparable
@@ -93,6 +120,21 @@ namespace helloserve.com.AdventOfCode
             }
 
             return rooms.Sum(r => r.IsValid ? r.SectorId : 0);
+        }
+
+        public void Part2(string input, string filename)
+        {
+            string[] lines = input.Split(new char[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
+            StringBuilder blr = new StringBuilder();
+            Room room;
+            foreach (var line in lines)
+            {
+                room = new AdventOfCode.Room(line);
+                if (room.IsValid)
+                    blr.AppendLine($"{room.SectorId}: {room.Name}");
+            }
+
+            File.WriteAllText(filename, blr.ToString());
         }
     }
 }
