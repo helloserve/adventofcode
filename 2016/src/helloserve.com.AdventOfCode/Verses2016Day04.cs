@@ -19,7 +19,7 @@ namespace helloserve.com.AdventOfCode
 
         public Room(string roomCode)
         {
-            Regex regex = new Regex(@"(?<encrypted>[a-z-]*)(?<sectorId>\d*)\[{1}(?<checksum>[a-z]{5})\]{1}$");
+            Regex regex = new Regex(@"(?<encrypted>[a-z-]*)-(?<sectorId>\d*)\[{1}(?<checksum>[a-z]{5})\]{1}$");
             Match match = regex.Match(roomCode);
             if (!match.Success)
                 return;
@@ -81,9 +81,6 @@ namespace helloserve.com.AdventOfCode
             _encryptedCharOrders = orderLookup.Values.ToList();
             _encryptedCharOrders.Sort();
             _encryptedCharOrders = _encryptedCharOrders.Take(_checksum.Length).ToList();
-
-            if (decryptedValue.EndsWith(" "))
-                decryptedValue = decryptedValue.Remove(decryptedValue.Length - 1, 1);
 
             Name = decryptedValue;
         }
