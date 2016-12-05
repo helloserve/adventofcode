@@ -23,3 +23,9 @@ This challenge was really just a triangle class with the logical property. The p
 ### Day 4
 
 The first regular expression for this season, and another circular index clamping bit for part 2 for shifting the letters. Oh, and dumping the output to inspect the names.
+
+### Day 5
+
+And here's the first MD5 problem of the season. The .NET MD5 implementation is pretty damn slow. I decided to optimize it by running [processor count] separate increasing integer ranges for calculating hashes. Since the thread method does not return a result anymore but instead updates a list under a mutex, I had to remove all my TDD test progress. The problem also clearly illustrates the difference between `Encoding.GetBytes()` and `BitConverter.ToString()`, that is, the reverse of the first one is not equivalent to the second (a point that eluded me for a while).
+
+For part 2, I had to change the threading to run until the code was complete, as opposed to running for a specific number of iterations and only using the first 8. To do this I passed in an action for the thread to execute under the mutex and set the abort variable if the code was complete.

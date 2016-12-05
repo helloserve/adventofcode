@@ -21,5 +21,17 @@ namespace helloserve.com.AdventOfCode.Tests
         {
             Assert.True(verses.Part1("reyedfim") == "f97c354d");
         }
+
+        [Fact]
+        public void Part2_Ex1()
+        {
+            Assert.True(verses.Part2("abc") == "05ace8e3");
+        }
+
+        [Fact]
+        public void Part2_Part2()
+        {
+            Assert.True(verses.Part2("reyedfim") == "863dde27");
+        }
     }
 }
