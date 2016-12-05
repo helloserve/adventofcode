@@ -7,60 +7,62 @@ using System.Threading.Tasks;
 
 namespace helloserve.com.AdventOfCode
 {
+    public class CodeItem
+    {
+        public int Index { get; set; }
+        public char Character { get; set; }
+    }
+
     public class Verses2016Day05
     {
+        private bool _codeComplete = false;
+        private List<CodeItem> _items = new List<CodeItem>();
+        private object _itemLock = new object();
+
         public string Part1(string input)
         {
             List<Task> tasks = new List<Task>();
-            string code = string.Empty;
-            object codeObject = new object();
+            
             for (int i = 0; i < Environment.ProcessorCount; i++)
             {
                 int startIndex = i;
-                tasks.Add(Task.Run(() => GetCodeItem(input, startIndex, Environment.ProcessorCount))
-                    .ContinueWith(a =>
-                    {
-                        lock (codeObject)
-                        {
-                            code = $"{code}{a.Result}";
-                        }
-                    }));
+                tasks.Add(Task.Run(() => GetCodeItem(input, startIndex, Environment.ProcessorCount)));
             }
             while (true)
             {
-                if (tasks.Count == 0)
-                    break;
-
                 if (tasks[0].IsCompleted)
                     tasks.RemoveAt(0);
+                if (tasks.Count == 0)
+                    break;
+                if (_items.Count > 10)
+                {
+                    _codeComplete = true;
+                }
             }
 
+            string code = new String(_items.OrderBy(i => i.Index).Take(8).Select(i => i.Character).ToArray());
             return code;
         }
 
-        public string GetCodeItem(string input, int startIndex, int skip, int? range = int.MaxValue)
+        private void GetCodeItem(string input, int startIndex, int skip, int? range = int.MaxValue)
         {
-            for (int i = startIndex; i < range; i += skip)
+            using (MD5 md5 = MD5.Create())
             {
-                MD5 md5 = MD5.Create();
-                md5.Initialize();
-                string hash = Encoding.ASCII.GetString(md5.ComputeHash(Encoding.ASCII.GetBytes($"{input}{i}")));
-                if (hash.StartsWith("00000"))
-                    return hash.Substring(5, 1);
+                for (int i = startIndex; i < range; i += skip)
+                {
+                    if (_codeComplete)
+                        break;
+
+                    string hash = BitConverter.ToString(md5.ComputeHash(Encoding.ASCII.GetBytes($"{input}{i}"))).Replace("-", "").ToLower();
+                    if (hash.StartsWith("00000"))
+                    {
+                        lock (_itemLock)
+                        {
+                            _items.Add(new CodeItem() { Index = i, Character = hash[5] });
+                        }
+                    }
+                }
             }
-
-            return null;
         }
-
-        //public string GetHexString(byte[] buffer)
-        //{
-        //    string hexString = string.Empty;
-        //    for (int i = 0; i < buffer.Length; i++)
-        //    {
-        //        hexString = $"{hexString}{buffer[i]:x}";
-        //    }
-
-        //    return hexString;
-        //}
     }
 }
