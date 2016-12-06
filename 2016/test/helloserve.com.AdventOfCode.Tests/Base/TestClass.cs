@@ -14,12 +14,5 @@ namespace helloserve.com.AdventOfCode.Tests.Base
             string path = $".\\Resources\\{filename}";
             return File.ReadAllText(path);
         }
-
-        [Fact]
-        public void ReadTextSource_HasText()
-        {
-            string source = ReadTextSource("textsource.txt");
-            Assert.True(source == "just some source");
-        }
     }
 }

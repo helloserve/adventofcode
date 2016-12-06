@@ -10,25 +10,25 @@ namespace helloserve.com.AdventOfCode.Tests
     {
         private Verses2016Day05 verses = new Verses2016Day05();
 
-        [Fact]
+        [Fact(Skip = "long running")]
         public void Part1_Ex1()
         {
             Assert.True(verses.Part1("abc") == "18f47a30");
         }
 
-        [Fact]
+        [Fact(Skip = "long running")]
         public void Part1_Part1()
         {
             Assert.True(verses.Part1("reyedfim") == "f97c354d");
         }
 
-        [Fact]
+        [Fact(Skip = "long running")]
         public void Part2_Ex1()
         {
             Assert.True(verses.Part2("abc") == "05ace8e3");
         }
 
-        [Fact]
+        [Fact(Skip = "long running")]
         public void Part2_Part2()
         {
             Assert.True(verses.Part2("reyedfim") == "863dde27");
