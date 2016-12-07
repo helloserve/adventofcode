@@ -33,3 +33,7 @@ For part 2, I had to change the threading to run until the code was complete, as
 ### Day 6
 
 Another simple text transformation, but this time I relied heavily on using LINQ composition to determine the most significant (or least for part 2) characters in each column set. I'm seeing more and more how to implement functional solutions in .NET.
+
+### Day 7
+
+A pretty gnarley day, chiefly because the given examples doesn't even come close to covering the possible variations in the input. I initially started out with Regexes, but soon abandoned it completely. After I got part 1 sorted though, part 2 came pretty quickly.
