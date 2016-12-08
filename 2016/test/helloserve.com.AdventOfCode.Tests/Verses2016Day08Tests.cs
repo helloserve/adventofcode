@@ -37,9 +37,9 @@ namespace helloserve.com.AdventOfCode.Tests
         }
 
         [Fact]
-        public void Part1_Part1()
+        public void Part1_Part2()
         {
-            Assert.True(verses.Part1(ReadTextSource("8.txt")) == 119);
+            Assert.True(verses.Part1(ReadTextSource("8.txt"), filename: ".\\Output\\8.txt") == 119);
         }
     }
 }

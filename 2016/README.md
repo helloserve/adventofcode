@@ -37,3 +37,7 @@ Another simple text transformation, but this time I relied heavily on using LINQ
 ### Day 7
 
 A pretty gnarley day, chiefly because the given examples doesn't even come close to covering the possible variations in the input. I initially started out with Regexes, but soon abandoned it completely. After I got part 1 sorted though, part 2 came pretty quickly.
+
+### Day 8
+
+A very cool challenge managing the memory buffer of a small screen. Biggest problems here was good range checking and circular indexing. Added a screen dump for debugging which came in handy in part 2 of the challenge.
