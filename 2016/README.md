@@ -41,3 +41,7 @@ A pretty gnarley day, chiefly because the given examples doesn't even come close
 ### Day 8
 
 A very cool challenge managing the memory buffer of a small screen. Biggest problems here was good range checking and circular indexing. Added a screen dump for debugging which came in handy in part 2 of the challenge.
+
+### Day 9
+
+This is getting somewhat tricky now. The first part wasn't easy per sè, but I got it done pretty solidly through a TDD approuch. However, with the twist in part 2, and the resulting recursion running into the memory exception, I ended up copying the part 1 code and altering it completely to work with `long` variables exclusively. That got it done, and of course it executes significantly faster too.
