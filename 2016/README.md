@@ -44,8 +44,8 @@ A very cool challenge managing the memory buffer of a small screen. Biggest prob
 
 ### Day 9
 
-This is getting somewhat tricky now. The first part wasn't easy per sè, but I got it done pretty solidly through a TDD approuch. However, with the twist in part 2, and the resulting recursion running into the memory exception, I ended up copying the part 1 code and altering it completely to work with `long` variables exclusively. That got it done, and of course it executes significantly faster too.
+This is getting somewhat tricky now. The first part wasn't easy per sÃ¨, but I got it done pretty solidly through a TDD approuch. However, with the twist in part 2, and the resulting recursion running into the memory exception, I ended up copying the part 1 code and altering it completely to work with `long` variables exclusively. That got it done, and of course it executes significantly faster too.
 
 ### Day 10
 
-Due to the language-heavy input I decided to build a more compiler-esque parser into a base class. This made it straight forward to read the commands. However, the challenge itself was deviously worded in that the commands don't follow one another in a top to bottom way (read paragrapgh 2). The result was a refactoring of parse results and re-queueing the input. Part 2 was also devious in that it required that the input be run to the end instead of to where the comparison test was successfull in part 1, but it required me to simply pass out of range values for that part.
+Due to the language-heavy input I decided to build a more compiler-esque parser into a base class. This made it straight forward to read the commands. However, the challenge itself was deviously worded in that the commands don't follow one another in a top to bottom way (read paragrapgh 2). The result was a refactoring of parse results and requeueing the input. Part 2 was also devious in that it required that the input be run to the end instead of to where the comparison test was successfull in part 1, but it required me to simply pass out of range values for that part.
