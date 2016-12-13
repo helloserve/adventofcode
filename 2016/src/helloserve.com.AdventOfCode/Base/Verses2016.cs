@@ -7,15 +7,17 @@ namespace helloserve.com.AdventOfCode.Base
 {
     public class Verses2016
     {
+        private readonly char[] _nonWordChars = new char[] { ' ', ',', '.' };
+
         public string ReadWord(string input, ref int index, string expectedValue = null)
         {
             string result = string.Empty;
             for (; index < input.Length; index++)
             {
-                if (string.IsNullOrEmpty(result) && input[index] == ' ')
+                if (string.IsNullOrEmpty(result) && _nonWordChars.Contains(input[index]))
                     continue;
 
-                if (input[index] == ' ')
+                if (_nonWordChars.Contains(input[index]))
                     break;
 
                 result = $"{result}{input[index]}";
