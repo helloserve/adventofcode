@@ -49,3 +49,17 @@ This is getting somewhat tricky now. The first part wasn't easy per sè, but I g
 ### Day 10
 
 Due to the language-heavy input I decided to build a more compiler-esque parser into a base class. This made it straight forward to read the commands. However, the challenge itself was deviously worded (although evident from the example) in that the commands don't follow one another in a top to bottom way (read paragrapgh 2). The result was a refactoring of parse results and requeueing the input. Part 2 was also devious in that it required that the input be run to the end instead of to where the comparison test was successfull in part 1, but it required me to simply pass out of range values for that part.
+
+### Day 11
+
+I must admit, this one stumped me completely. After *many* false starts I started on an algorithm to do forward looking at target floors to determine the next move, but it was only after talking to a fellow adventist that I was directed to a state tree implementation.
+
+Some simple exclusion scenarios:
+1. We can only ever take one item on the lift, except
+2. We can take two items if they *fit* (e.g. HG and HM)
+
+My decision hierarchy or prioritorization are as follows:
+1. In order to speed up initial moves, first check the floor above to move asssemblies up. The assumption is that it will only be later on that fitting M and G items will be on the same floor.
+2. Consider items on the same floor. We first want to try and consider moving whatever we can up.
+3. Then we look if we are matching anything below, so we can consider moving the assembly down where it will fit, meaning the following move can mvoe them up together.
+4. Basically consider all items moving up and down on thier own. We don't consider down if there are no items below me, because we would simply have to bring it up again.
