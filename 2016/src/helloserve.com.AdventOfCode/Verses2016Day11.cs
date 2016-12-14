@@ -25,16 +25,16 @@ namespace helloserve.com.AdventOfCode
             switch (ReadWord(line, ref index))
             {
                 case "first":
-                    floorLevel = 0;
-                    break;
-                case "second":
                     floorLevel = 1;
                     break;
-                case "third":
+                case "second":
                     floorLevel = 2;
                     break;
-                case "fourth":
+                case "third":
                     floorLevel = 3;
+                    break;
+                case "fourth":
+                    floorLevel = 4;
                     break;
             }
 
@@ -69,7 +69,7 @@ namespace helloserve.com.AdventOfCode
                 string assembly = ReadWord(line, ref index);
 
                 ScenarioNode.Items.Add(AssemblyItem.CreateItem(assembly, isotope));
-                _currentNode.Floors[floorLevel].Items.Add((byte)(ScenarioNode.Items.Count - 1));
+                _currentNode.Floors[floorLevel - 1].Items.Add((byte)(ScenarioNode.Items.Count - 1));
 
                 ReadWord(line, ref index);
             }
@@ -106,7 +106,8 @@ namespace helloserve.com.AdventOfCode
                 return null;
 
             //check to see if any items are fried, in which case this move consideration failed.
-            //TODO fried
+            if (Cooked())
+                return null;
 
             #region Determine and create all the possible moves            
 
@@ -130,13 +131,14 @@ namespace helloserve.com.AdventOfCode
                 SaveMoves(fits, FloorIndex - 1);
             }
 
-            //look at some odd special cases
-            fits = SingleAssemblyItems();
-            
+            //look at the remaining options
+            fits = SameAssemblyItems();
+            fits.AddRange(SingleAssemblyItems());
+
             //try up first
             if (FloorIndex < Floors.Count - 1)
                 SaveMoves(fits, FloorIndex + 1);
-            
+
             //should we consider going down?
             if (FloorIndex > 0 && Floors[FloorIndex - 1].Items.Any())
                 SaveMoves(fits, FloorIndex - 1);
@@ -154,6 +156,21 @@ namespace helloserve.com.AdventOfCode
             }
 
             return null;
+        }
+
+        private bool Cooked()
+        {
+            for (int i = 0; i < Floors[FloorIndex].Items.Count; i++)
+            {
+                if (Floors[FloorIndex].Items.Any(x => Items[x].Fit(Items[Floors[FloorIndex].Items[i]])))
+                    continue;
+
+                //now we know there is no fit, so it can be fried
+                if (Floors[FloorIndex].Items.Any(x => Items[x].Fried(Items[Floors[FloorIndex].Items[i]])))
+                    return true;
+            }
+
+            return false;
         }
 
         private List<byte?[]> FindAssemblyFits(int targetFloorIndex)
@@ -184,6 +201,24 @@ namespace helloserve.com.AdventOfCode
             return fits;
         }
 
+        private List<byte?[]> SameAssemblyItems()
+        {
+            List<byte?[]> fits = new List<byte?[]>();
+            for (int i = 0; i < Floors[FloorIndex].Items.Count; i++)
+            {
+                for (int j = 0; j < Floors[FloorIndex].Items.Count; j++)
+                {
+                    if (i == j)
+                        continue;
+
+                    if (Items[Floors[FloorIndex].Items[i]].MatchType(Items[Floors[FloorIndex].Items[j]]))
+                        fits.Add(new byte?[] { Floors[FloorIndex].Items[i], Floors[FloorIndex].Items[j] });
+                }
+            }
+
+            return fits;
+        }
+
         private List<byte?[]> SingleAssemblyItems()
         {
             List<byte?[]> fits = new List<byte?[]>();
@@ -206,11 +241,17 @@ namespace helloserve.com.AdventOfCode
                 newNode.FloorIndex = targetFloorIndex;
                 newNode.Moves++;
 
-                //offload the elevator contents
+                //move items from the current floor to the new floor
                 if (fit[0].HasValue)
-                    newNode.Floors[FloorIndex].Items.Add(fit[0].Value);
+                {
+                    newNode.Floors[FloorIndex].Items.Remove(fit[0].Value);
+                    newNode.Floors[newNode.FloorIndex].Items.Add(fit[0].Value);
+                }
                 if (fit[1].HasValue)
-                    newNode.Floors[FloorIndex].Items.Add(fit[1].Value);
+                {
+                    newNode.Floors[FloorIndex].Items.Remove(fit[1].Value);
+                    newNode.Floors[newNode.FloorIndex].Items.Add(fit[1].Value);
+                }
             }
         }
 
@@ -232,19 +273,29 @@ namespace helloserve.com.AdventOfCode
         }
     }
 
-    internal class AssemblyItem : IEquatable<AssemblyItem>
+    internal class AssemblyItem
     {
         public string Isotope { get; set; }
 
-        public bool Equals(AssemblyItem other)
+        public bool MatchIsotype(AssemblyItem other)
         {
             return Isotope.Equals(other.Isotope, StringComparison.CurrentCultureIgnoreCase);
+        }
+
+        public bool MatchType(AssemblyItem other)
+        {
+            return GetType().Name == other.GetType().Name;
         }
 
         public bool Fit(AssemblyItem other)
         {
             return (((this is Microchip) && (other is Generator)) ||
-                   ((this is Generator) && (other is Microchip))) && Equals(other);
+                   ((this is Generator) && (other is Microchip))) && MatchIsotype(other);
+        }
+
+        public bool Fried(AssemblyItem other)
+        {
+            return ((this is Microchip) && (other is Generator)) && !MatchIsotype(other);
         }
 
         public static AssemblyItem CreateItem(string assemblyType, string isotope)
