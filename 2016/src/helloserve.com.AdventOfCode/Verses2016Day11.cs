@@ -10,11 +10,11 @@ namespace helloserve.com.AdventOfCode
     {
         private ScenarioNode _currentNode = new ScenarioNode();
 
-        public int Part1(string input)
+        public int? Part1(string input)
         {
             input.Split(new char[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries).ToList().ForEach(l => PopulateFloor(l));
 
-            return _currentNode.PickMoves().GetValueOrDefault();
+            return _currentNode.PickMoves();
         }
 
         private void PopulateFloor(string line)
@@ -116,24 +116,25 @@ namespace helloserve.com.AdventOfCode
             //look up to see if we find one that match isotope so that we can move the lift up
             if (FloorIndex < Floors.Count - 1)
             {
-                fits = FindAssemblyFits(FloorIndex + 1);
+                fits = DistinctFits(FindAssemblyFits(FloorIndex + 1));
                 SaveMoves(fits, FloorIndex + 1);
             }
 
-            //look at same level to see if there are any fits
-            fits = FindAssemblyFits(FloorIndex);
-            SaveMoves(fits, FloorIndex);
+            //look at same level to see if there are any fits, we can move these up, hopefully
+            fits = DistinctFits(FindAssemblyFits(FloorIndex));
+            SaveMoves(fits, FloorIndex + 1);
 
             //look at lower floor
             if (FloorIndex > 0)
             {
-                fits = FindAssemblyFits(FloorIndex - 1);
+                fits = DistinctFits(FindAssemblyFits(FloorIndex - 1));
                 SaveMoves(fits, FloorIndex - 1);
             }
 
             //look at the remaining options
             fits = SameAssemblyItems();
             fits.AddRange(SingleAssemblyItems());
+            fits = DistinctFits(fits);
 
             //try up first
             if (FloorIndex < Floors.Count - 1)
@@ -175,7 +176,6 @@ namespace helloserve.com.AdventOfCode
 
         private List<byte?[]> FindAssemblyFits(int targetFloorIndex)
         {
-            int? targetAssemblyItem = null;
             List<byte?[]> fits = new List<byte?[]>();
 
             //do target floor first, so that we can early exit if the floor contains nothing
@@ -185,15 +185,16 @@ namespace helloserve.com.AdventOfCode
                 {
                     if (Items[Floors[FloorIndex].Items[i]].Fit(Items[Floors[targetFloorIndex].Items[j]]))
                     {
-                        byte?[] fit = new byte?[] { (byte)i, null };
+                        byte?[] fit;
+                        if (targetFloorIndex == FloorIndex)
+                            fit = new byte?[] { (byte)Floors[targetFloorIndex].Items[i], (byte)Floors[targetFloorIndex].Items[j] };
+                        else
+                            fit = new byte?[] { (byte)Floors[FloorIndex].Items[i], null };
+
                         fits.Add(fit);
 
                         //we can also consider the pair together if they are on the same floor
-                        if (targetFloorIndex == FloorIndex)
-                        {
-                            fit = new byte?[] { (byte)i, (byte)targetAssemblyItem };
-                            fits.Add(fit);
-                        }
+
                     }
                 }
             }
@@ -270,6 +271,24 @@ namespace helloserve.com.AdventOfCode
             clone.Moves = Moves;
 
             return clone;
+        }
+
+        private List<byte?[]> DistinctFits(List<byte?[]> fits)
+        {
+            byte?[] fit;
+            int i = 0;
+            while (i < fits.Count)
+            {
+                fit = fits[i];
+                fits.RemoveAt(i);
+                if (!fits.Any(f => f[0] == fit[0] && f[1] == fit[1]))
+                {
+                    fits.Insert(i, fit);
+                    i++;
+                }
+            }
+
+            return fits;
         }
     }
 
