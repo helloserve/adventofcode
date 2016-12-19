@@ -27,5 +27,12 @@ namespace helloserve.com.AdventOfCode.Tests
             string input = "The first floor contains a hydrogen-compatible microchip and a lithium-compatible microchip.\r\nThe second floor contains a hydrogen generator.\r\nThe third floor contains a lithium generator.\r\nThe fourth floor contains nothing relevant.";
             Assert.True(verses.Part1(input) == 11);
         }
+
+        [Fact]
+        public void Part1_Part1()
+        {
+            verses = new Verses2016Day11();
+            Assert.True(verses.Part1(ReadTextSource("11.txt")) == 31);
+        }
     }
 }

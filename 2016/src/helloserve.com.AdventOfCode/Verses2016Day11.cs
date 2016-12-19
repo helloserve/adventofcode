@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace helloserve.com.AdventOfCode
@@ -12,9 +13,26 @@ namespace helloserve.com.AdventOfCode
 
         public int? Part1(string input)
         {
+            InitializeOutput(".\\output\\11.1.txt");
+
             input.Split(new char[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries).ToList().ForEach(l => PopulateFloor(l));
 
-            return _currentNode.PickMoves();
+            int? result = null;
+            while (_currentNode != null)
+            {
+                LogOutput(".\\output\\11.1.txt", _currentNode.ToString());
+
+                result = _currentNode.Win();
+                if (result.HasValue)
+                    return result;
+
+                if (_currentNode.Validate())
+                    _currentNode.PickMoves();
+
+                _currentNode = _currentNode.Traverse();
+            }
+
+            return null;
         }
 
         private void PopulateFloor(string line)
@@ -57,13 +75,8 @@ namespace helloserve.com.AdventOfCode
 
             while (index < line.Length)
             {
-                if (string.IsNullOrEmpty(containVerb))
-                {
-                    if (ReadWord(line, ref index) == "and")
-                        ReadWord(line, ref index, "a");
-                }
-                else
-                    containVerb = null;
+                if (containVerb != "a" && (containVerb == "and" || ReadWord(line, ref index) == "and"))
+                    ReadWord(line, ref index, "a");
 
                 string isotope = ReadWord(line, ref index).Replace("-compatible", string.Empty);
                 string assembly = ReadWord(line, ref index);
@@ -71,21 +84,24 @@ namespace helloserve.com.AdventOfCode
                 ScenarioNode.Items.Add(AssemblyItem.CreateItem(assembly, isotope));
                 _currentNode.Floors[floorLevel - 1].Items.Add((byte)(ScenarioNode.Items.Count - 1));
 
-                ReadWord(line, ref index);
+                containVerb = ReadWord(line, ref index);
             }
 
             _currentNode.Floors.OrderBy(f => f.Level).ToList();
         }
     }
 
-    internal class ScenarioNode
+    internal class ScenarioNode : IEquatable<ScenarioNode>
     {
+        public static List<string> SeenScenarios = new List<string>();
         public static List<AssemblyItem> Items = new List<AssemblyItem>();
+        public static int NodeIdentifierSequence = 1;
 
+        public int NodeIdentifier { get; set; }
         public int Moves { get; set; }
         public int FloorIndex { get; set; }
         public List<Floor> Floors { get; set; }
-        //public Elevator Elevator { get; set; }
+        public bool Traversed { get; set; }
 
         public ScenarioNode PreviousNode { get; set; }
         public List<ScenarioNode> NextNodes { get; set; }
@@ -94,45 +110,56 @@ namespace helloserve.com.AdventOfCode
         {
             Floors = new List<AdventOfCode.Floor>();
             NextNodes = new List<AdventOfCode.ScenarioNode>();
+            Traversed = false;
         }
 
-        public int? PickMoves()
+        public int? Win()
         {
             if (!Floors.Any(f => f.Level < 4 && f.Items.Any()))
-                //|| (!Elevator.IsEmpty || FloorIndex != 3))
                 return Moves;
 
+            return null;
+        }
+
+        public bool Validate()
+        {
             if (!Floors[FloorIndex].Items.Any())
-                return null;
+                return false;
 
             //check to see if any items are fried, in which case this move consideration failed.
             if (Cooked())
-                return null;
+                return false;
 
-            #region Determine and create all the possible moves            
+            return true;
+        }
 
+        public void PickMoves()
+        {
             List<byte?[]> fits = new List<byte?[]>();
 
-            //look up to see if we find one that match isotope so that we can move the lift up
             if (FloorIndex < Floors.Count - 1)
             {
-                fits = DistinctFits(FindAssemblyFits(FloorIndex + 1));
+                fits = FindAssemblyFits(FloorIndex);
+                fits.AddRange(SameAssemblyItems());
+                fits.AddRange(FindAssemblyFits(FloorIndex + 1));
+
+                fits = DistinctFits(fits);
+
                 SaveMoves(fits, FloorIndex + 1);
             }
 
-            //look at same level to see if there are any fits, we can move these up, hopefully
-            fits = DistinctFits(FindAssemblyFits(FloorIndex));
-            SaveMoves(fits, FloorIndex + 1);
-
-            //look at lower floor
             if (FloorIndex > 0)
             {
-                fits = DistinctFits(FindAssemblyFits(FloorIndex - 1));
+                fits = FindAssemblyFits(FloorIndex);
+                fits.AddRange(SameAssemblyItems());
+                fits = FindAssemblyFits(FloorIndex - 1);
+
+                fits = DistinctFits(fits);
+
                 SaveMoves(fits, FloorIndex - 1);
             }
 
-            //look at the remaining options
-            fits = SameAssemblyItems();
+            //remaining options
             fits.AddRange(SingleAssemblyItems());
             fits = DistinctFits(fits);
 
@@ -141,33 +168,55 @@ namespace helloserve.com.AdventOfCode
                 SaveMoves(fits, FloorIndex + 1);
 
             //should we consider going down?
-            if (FloorIndex > 0 && Floors[FloorIndex - 1].Items.Any())
+            if (FloorIndex > 0 && Floors.Any(f => f.Level < FloorIndex + 1 && f.Items.Any()))
                 SaveMoves(fits, FloorIndex - 1);
+        }
 
-            #endregion
+        public ScenarioNode Traverse()
+        {
+            SeenScenarios.Add(GetScenarioString());
 
-            int? nodeResult = null;
-            while (NextNodes.Count > 0)
+            if (!Traversed && NextNodes.Count > 0)
             {
-                nodeResult = NextNodes[0].PickMoves();
-                if (nodeResult.HasValue)
-                    return nodeResult;
+                ScenarioNode next = NextNodes[0];
+                while (next != null && SeenScenarios.Any(s => s.Equals(next)))
+                {
+                    NextNodes.RemoveAt(0);
+                    if (NextNodes.Count > 0)
+                        next = NextNodes[0];
+                    else
+                        next = null;
+                }
 
-                NextNodes.RemoveAt(0);
+                Traversed = NextNodes.Count == 0;
+                if (next != null)
+                {
+                    NextNodes.RemoveAt(0);
+                    return next;
+                }
             }
 
-            return null;
+            return PreviousNode;
         }
 
         private bool Cooked()
         {
+            List<int> singleItems = new List<int>();
+            AssemblyItem item;
+
             for (int i = 0; i < Floors[FloorIndex].Items.Count; i++)
             {
-                if (Floors[FloorIndex].Items.Any(x => Items[x].Fit(Items[Floors[FloorIndex].Items[i]])))
+                item = Items[Floors[FloorIndex].Items[i]];
+                if (Floors[FloorIndex].Items.Any(x => item.Fit(Items[x])) && item is Microchip)
                     continue;
 
-                //now we know there is no fit, so it can be fried
-                if (Floors[FloorIndex].Items.Any(x => Items[x].Fried(Items[Floors[FloorIndex].Items[i]])))
+                singleItems.Add(i);
+            }
+
+            for (int i = 0; i < singleItems.Count; i++)
+            {
+                item = Items[Floors[FloorIndex].Items[singleItems[i]]];
+                if (singleItems.Any(x => item.Fried(Items[Floors[FloorIndex].Items[x]])))
                     return true;
             }
 
@@ -192,9 +241,6 @@ namespace helloserve.com.AdventOfCode
                             fit = new byte?[] { (byte)Floors[FloorIndex].Items[i], null };
 
                         fits.Add(fit);
-
-                        //we can also consider the pair together if they are on the same floor
-
                     }
                 }
             }
@@ -253,6 +299,11 @@ namespace helloserve.com.AdventOfCode
                     newNode.Floors[FloorIndex].Items.Remove(fit[1].Value);
                     newNode.Floors[newNode.FloorIndex].Items.Add(fit[1].Value);
                 }
+
+                if (SeenScenarios.Any(s => s.Equals(newNode.GetScenarioString())))
+                    continue;
+
+                NextNodes.Add(newNode);
             }
         }
 
@@ -260,13 +311,12 @@ namespace helloserve.com.AdventOfCode
         {
             ScenarioNode clone = new ScenarioNode();
 
-            NextNodes.Add(clone);
+            clone.NodeIdentifier = NodeIdentifierSequence++;
             clone.PreviousNode = this;
 
             clone.Floors = new List<AdventOfCode.Floor>();
             for (int i = 0; i < Floors.Count; i++)
                 clone.Floors.Add(Floors[i].Clone());
-            //clone.Elevator = Elevator.Clone();
             clone.FloorIndex = FloorIndex;
             clone.Moves = Moves;
 
@@ -281,7 +331,7 @@ namespace helloserve.com.AdventOfCode
             {
                 fit = fits[i];
                 fits.RemoveAt(i);
-                if (!fits.Any(f => f[0] == fit[0] && f[1] == fit[1]))
+                if (!fits.Any(f => (f[0] == fit[0] && f[1] == fit[1]) || (f[0] == fit[1] && f[1] == fit[0])))
                 {
                     fits.Insert(i, fit);
                     i++;
@@ -289,6 +339,44 @@ namespace helloserve.com.AdventOfCode
             }
 
             return fits;
+        }
+
+        public override string ToString()
+        {
+            StringBuilder blr = new StringBuilder();
+            blr.AppendLine($"Node {NodeIdentifier} Moves {Moves}");
+            for (int i = Floors.Count - 1; i >= 0; i--)
+            {
+                string floorIndicator = (FloorIndex == i) ? ">" : " ";
+                blr.Append($"Floor{floorIndicator}{Floors[i].Level} [");
+                for (int j = 0; j < Floors[i].Items.Count; j++)
+                {
+                    blr.Append($"{Items[Floors[i].Items[j]].ToString()},");
+                }
+                blr.AppendLine("]");
+            }
+
+            return blr.ToString();
+        }
+
+        private string GetScenarioString()
+        {
+            string result = $"{FloorIndex}";
+            for (int i = Floors.Count - 1; i >= 0; i--)
+            {
+                result = $"{result}_{Floors[i].Level}[";
+                foreach (byte index in Floors[i].Items.OrderBy(x => x))
+                {
+                    result = $"{result}{Items[index].ToString()},";
+                }
+                result = $"{result}]";
+            }
+            return result;
+        }
+
+        public bool Equals(ScenarioNode other)
+        {
+            return GetScenarioString().Equals(other.GetScenarioString());
         }
     }
 
@@ -329,6 +417,11 @@ namespace helloserve.com.AdventOfCode
 
             throw new ArgumentException($"{assemblyType} is an unknown assembly");
         }
+
+        public override string ToString()
+        {
+            return $"{GetType().Name.Substring(0, 1)}{Isotope.Substring(0, 1).ToUpper()}";
+        }
     };
 
     internal class Microchip : AssemblyItem { };
@@ -356,28 +449,4 @@ namespace helloserve.com.AdventOfCode
             return clone;
         }
     }
-
-    //internal class Elevator
-    //{
-    //    public byte? Item1 { get; set; }
-    //    public byte? Item2 { get; set; }
-
-    //    public bool IsEmpty
-    //    {
-    //        get
-    //        {
-    //            return Item1 == null && Item2 == null;
-    //        }
-    //    }
-
-    //    public Elevator Clone()
-    //    {
-    //        Elevator clone = new Elevator();
-
-    //        clone.Item1 = Item1;
-    //        clone.Item2 = Item2;
-
-    //        return clone;
-    //    }
-    //}
 }

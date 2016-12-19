@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -7,6 +9,7 @@ namespace helloserve.com.AdventOfCode.Base
 {
     public class Verses2016
     {
+        private ConcurrentDictionary<string, object> _fileLocks = new ConcurrentDictionary<string, object>();
         private readonly char[] _nonWordChars = new char[] { ' ', ',', '.' };
 
         public string ReadWord(string input, ref int index, string expectedValue = null)
@@ -33,6 +36,38 @@ namespace helloserve.com.AdventOfCode.Base
         public int ReadInt(string input, ref int index)
         {
             return int.Parse(ReadWord(input, ref index));
+        }
+
+        public void InitializeOutput(string filename)
+        {
+            lock (FileLock(filename))
+            {
+                if (File.Exists(filename))
+                    File.Delete(filename);
+            }
+        }
+
+        public void LogOutput(string filename, string contents)
+        {
+
+            lock (FileLock(filename))
+            {
+                File.AppendAllText(filename, contents);
+            }
+        }
+
+        private object FileLock(string filename)
+        {
+            object fileLock;
+            if (!_fileLocks.ContainsKey(filename))
+            {
+                fileLock = new object();
+                _fileLocks.AddOrUpdate(filename, fileLock, (k, v) => fileLock);
+            }
+            else
+                fileLock = _fileLocks[filename];
+
+            return fileLock;
         }
     }
 }
