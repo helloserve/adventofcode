@@ -55,11 +55,13 @@ Due to the language-heavy input I decided to build a more compiler-esque parser 
 I must admit, this one stumped me completely. After **many** false starts I started on an algorithm to do forward looking at target floors to determine the next move, but it was only after talking to a fellow adventist that I was directed to a state tree implementation.
 
 Some simple exclusion scenarios:
+
 1. We can only ever take one item on the lift, except
 2. When it's two of the same assembly types
 3. If they **fit** (e.g. HG and HM)
 
 My decision hierarchy or prioritization are as follows:
+
 1. In order to speed up initial moves, first check the floor above to move asssemblies up. The assumption is that it will only be later on that fitting M and G items will be on the same floor.
 2. Consider items on the same floor. We first want to try and consider moving whatever we can up.
 3. Then we look if we are matching anything below, so we can consider moving the assembly down where it will fit, meaning the following move can mvoe them up together.
