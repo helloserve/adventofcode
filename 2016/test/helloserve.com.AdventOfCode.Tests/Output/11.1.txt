@@ -1,280 +1,65 @@
 Node 0 Moves 0
 Floor 4 []
-Floor 3 [GPr,MPr,GRu,MRu,]
-Floor 2 [MPl,MSt,]
-Floor>1 [GTh,MTh,GPl,GSt,GEl,MEl,GDi,MDi,]
-Node 1 Moves 1
+Floor 3 []
+Floor 2 [GSt,]
+Floor>1 [MHy,]
+Node 683 Moves 1
 Floor 4 []
-Floor 3 [GPr,MPr,GRu,MRu,]
-Floor>2 [MPl,MSt,GTh,MTh,]
-Floor 1 [GPl,GSt,GEl,MEl,GDi,MDi,]
-Node 43 Moves 2
+Floor 3 []
+Floor>2 [GSt,MHy,]
+Floor 1 []
+Node 684 Moves 2
 Floor 4 []
-Floor>3 [GPr,MPr,GRu,MRu,GTh,MTh,]
-Floor 2 [MPl,MSt,]
-Floor 1 [GPl,GSt,GEl,MEl,GDi,MDi,]
-Node 57 Moves 3
-Floor>4 [GPr,MPr,]
-Floor 3 [GRu,MRu,GTh,MTh,]
-Floor 2 [MPl,MSt,]
-Floor 1 [GPl,GSt,GEl,MEl,GDi,MDi,]
-Node 78 Moves 4
-Floor 4 [MPr,]
-Floor>3 [GRu,MRu,GTh,MTh,GPr,]
-Floor 2 [MPl,MSt,]
-Floor 1 [GPl,GSt,GEl,MEl,GDi,MDi,]
-Node 80 Moves 5
-Floor>4 [MPr,GRu,MRu,]
-Floor 3 [GTh,MTh,GPr,]
-Floor 2 [MPl,MSt,]
-Floor 1 [GPl,GSt,GEl,MEl,GDi,MDi,]
-Node 97 Moves 6
-Floor 4 [GRu,MRu,]
-Floor>3 [GTh,MTh,GPr,MPr,]
-Floor 2 [MPl,MSt,]
-Floor 1 [GPl,GSt,GEl,MEl,GDi,MDi,]
-Node 101 Moves 7
-Floor>4 [GRu,MRu,GTh,MTh,]
-Floor 3 [GPr,MPr,]
-Floor 2 [MPl,MSt,]
-Floor 1 [GPl,GSt,GEl,MEl,GDi,MDi,]
-Node 113 Moves 8
-Floor 4 [MRu,GTh,MTh,]
-Floor>3 [GPr,MPr,GRu,]
-Floor 2 [MPl,MSt,]
-Floor 1 [GPl,GSt,GEl,MEl,GDi,MDi,]
-Node 117 Moves 9
-Floor>4 [MRu,GTh,MTh,GPr,MPr,]
-Floor 3 [GRu,]
-Floor 2 [MPl,MSt,]
-Floor 1 [GPl,GSt,GEl,MEl,GDi,MDi,]
-Node 126 Moves 10
-Floor 4 [GTh,MTh,GPr,MPr,]
-Floor>3 [GRu,MRu,]
-Floor 2 [MPl,MSt,]
-Floor 1 [GPl,GSt,GEl,MEl,GDi,MDi,]
-Node 132 Moves 11
-Floor>4 [GTh,MTh,GPr,MPr,GRu,MRu,]
-Floor 3 []
-Floor 2 [MPl,MSt,]
-Floor 1 [GPl,GSt,GEl,MEl,GDi,MDi,]
-Node 137 Moves 12
-Floor 4 [MTh,GPr,MPr,GRu,MRu,]
-Floor>3 [GTh,]
-Floor 2 [MPl,MSt,]
-Floor 1 [GPl,GSt,GEl,MEl,GDi,MDi,]
-Node 145 Moves 13
-Floor 4 [MTh,GPr,MPr,GRu,MRu,]
-Floor 3 []
-Floor>2 [MPl,MSt,GTh,]
-Floor 1 [GPl,GSt,GEl,MEl,GDi,MDi,]
-Node 146 Moves 14
-Floor 4 [MTh,GPr,MPr,GRu,MRu,]
-Floor>3 [MSt,MPl,]
-Floor 2 [GTh,]
-Floor 1 [GPl,GSt,GEl,MEl,GDi,MDi,]
-Node 155 Moves 15
-Floor>4 [MTh,GPr,MPr,GRu,MRu,MPl,MSt,]
-Floor 3 []
-Floor 2 [GTh,]
-Floor 1 [GPl,GSt,GEl,MEl,GDi,MDi,]
-Node 160 Moves 16
-Floor 4 [GPr,MPr,GRu,MRu,MPl,MSt,]
-Floor>3 [MTh,]
-Floor 2 [GTh,]
-Floor 1 [GPl,GSt,GEl,MEl,GDi,MDi,]
-Node 167 Moves 17
-Floor 4 [GPr,MPr,GRu,MRu,MPl,MSt,]
-Floor 3 []
-Floor>2 [GTh,MTh,]
-Floor 1 [GPl,GSt,GEl,MEl,GDi,MDi,]
-Node 170 Moves 18
-Floor 4 [GPr,MPr,GRu,MRu,MPl,MSt,]
-Floor>3 [GTh,MTh,]
-Floor 2 []
-Floor 1 [GPl,GSt,GEl,MEl,GDi,MDi,]
-Node 175 Moves 19
-Floor>4 [GPr,MPr,GRu,MRu,MPl,MSt,GTh,MTh,]
-Floor 3 []
-Floor 2 []
-Floor 1 [GPl,GSt,GEl,MEl,GDi,MDi,]
-Node 180 Moves 20
-Floor 4 [MPr,GRu,MRu,MPl,MSt,GTh,MTh,]
-Floor>3 [GPr,]
-Floor 2 []
-Floor 1 [GPl,GSt,GEl,MEl,GDi,MDi,]
-Node 190 Moves 21
-Floor 4 [MPr,GRu,MRu,MPl,MSt,GTh,MTh,]
-Floor 3 []
-Floor>2 [GPr,]
-Floor 1 [GPl,GSt,GEl,MEl,GDi,MDi,]
-Node 192 Moves 22
-Floor 4 [MPr,GRu,MRu,MPl,MSt,GTh,MTh,]
-Floor 3 []
-Floor 2 []
-Floor>1 [GPl,GSt,GEl,MEl,GDi,MDi,GPr,]
-Node 193 Moves 23
-Floor 4 [MPr,GRu,MRu,MPl,MSt,GTh,MTh,]
-Floor 3 []
-Floor>2 [GEl,MEl,]
-Floor 1 [GPl,GSt,GDi,MDi,GPr,]
-Node 226 Moves 24
-Floor 4 [MPr,GRu,MRu,MPl,MSt,GTh,MTh,]
-Floor>3 [GEl,MEl,]
-Floor 2 []
-Floor 1 [GPl,GSt,GDi,MDi,GPr,]
-Node 231 Moves 25
-Floor>4 [MPr,GRu,MRu,MPl,MSt,GTh,MTh,GEl,MEl,]
-Floor 3 []
-Floor 2 []
-Floor 1 [GPl,GSt,GDi,MDi,GPr,]
-Node 236 Moves 26
-Floor 4 [GRu,MRu,MPl,MSt,GTh,MTh,GEl,MEl,]
-Floor>3 [MPr,]
-Floor 2 []
-Floor 1 [GPl,GSt,GDi,MDi,GPr,]
-Node 246 Moves 27
-Floor 4 [GRu,MRu,MPl,MSt,GTh,MTh,GEl,MEl,]
-Floor 3 []
-Floor>2 [MPr,]
-Floor 1 [GPl,GSt,GDi,MDi,GPr,]
-Node 247 Moves 28
-Floor 4 [GRu,MRu,MPl,MSt,GTh,MTh,GEl,MEl,]
-Floor 3 []
-Floor 2 []
-Floor>1 [GPl,GSt,GDi,MDi,GPr,MPr,]
-Node 250 Moves 29
-Floor 4 [GRu,MRu,MPl,MSt,GTh,MTh,GEl,MEl,]
-Floor 3 []
-Floor>2 [GDi,MDi,]
-Floor 1 [GPl,GSt,GPr,MPr,]
-Node 274 Moves 30
-Floor 4 [GRu,MRu,MPl,MSt,GTh,MTh,GEl,MEl,]
-Floor>3 [GDi,MDi,]
-Floor 2 []
-Floor 1 [GPl,GSt,GPr,MPr,]
-Node 279 Moves 31
-Floor>4 [GRu,MRu,MPl,MSt,GTh,MTh,GEl,MEl,GDi,MDi,]
-Floor 3 []
-Floor 2 []
-Floor 1 [GPl,GSt,GPr,MPr,]
-Node 284 Moves 32
-Floor 4 [MRu,MPl,MSt,GTh,MTh,GEl,MEl,GDi,MDi,]
-Floor>3 [GRu,]
-Floor 2 []
-Floor 1 [GPl,GSt,GPr,MPr,]
-Node 296 Moves 33
-Floor 4 [MRu,MPl,MSt,GTh,MTh,GEl,MEl,GDi,MDi,]
-Floor 3 []
-Floor>2 [GRu,]
-Floor 1 [GPl,GSt,GPr,MPr,]
-Node 298 Moves 34
-Floor 4 [MRu,MPl,MSt,GTh,MTh,GEl,MEl,GDi,MDi,]
-Floor 3 []
-Floor 2 []
-Floor>1 [GPl,GSt,GPr,MPr,GRu,]
-Node 299 Moves 35
-Floor 4 [MRu,MPl,MSt,GTh,MTh,GEl,MEl,GDi,MDi,]
-Floor 3 []
-Floor>2 [GPr,MPr,]
-Floor 1 [GPl,GSt,GRu,]
-Node 318 Moves 36
-Floor 4 [MRu,MPl,MSt,GTh,MTh,GEl,MEl,GDi,MDi,]
-Floor>3 [GPr,MPr,]
-Floor 2 []
-Floor 1 [GPl,GSt,GRu,]
-Node 323 Moves 37
-Floor>4 [MRu,MPl,MSt,GTh,MTh,GEl,MEl,GDi,MDi,GPr,MPr,]
-Floor 3 []
-Floor 2 []
-Floor 1 [GPl,GSt,GRu,]
-Node 328 Moves 38
-Floor 4 [MPl,MSt,GTh,MTh,GEl,MEl,GDi,MDi,GPr,MPr,]
-Floor>3 [MRu,]
-Floor 2 []
-Floor 1 [GPl,GSt,GRu,]
-Node 340 Moves 39
-Floor 4 [MPl,MSt,GTh,MTh,GEl,MEl,GDi,MDi,GPr,MPr,]
-Floor 3 []
-Floor>2 [MRu,]
-Floor 1 [GPl,GSt,GRu,]
-Node 341 Moves 40
-Floor 4 [MPl,MSt,GTh,MTh,GEl,MEl,GDi,MDi,GPr,MPr,]
-Floor 3 []
-Floor 2 []
-Floor>1 [GPl,GSt,GRu,MRu,]
-Node 344 Moves 41
-Floor 4 [MPl,MSt,GTh,MTh,GEl,MEl,GDi,MDi,GPr,MPr,]
-Floor 3 []
-Floor>2 [GRu,MRu,]
-Floor 1 [GPl,GSt,]
-Node 356 Moves 42
-Floor 4 [MPl,MSt,GTh,MTh,GEl,MEl,GDi,MDi,GPr,MPr,]
-Floor>3 [GRu,MRu,]
-Floor 2 []
-Floor 1 [GPl,GSt,]
-Node 361 Moves 43
-Floor>4 [MPl,MSt,GTh,MTh,GEl,MEl,GDi,MDi,GPr,MPr,GRu,MRu,]
-Floor 3 []
-Floor 2 []
-Floor 1 [GPl,GSt,]
-Node 366 Moves 44
-Floor 4 [MSt,GTh,MTh,GEl,MEl,GDi,MDi,GPr,MPr,GRu,MRu,]
-Floor>3 [MPl,]
-Floor 2 []
-Floor 1 [GPl,GSt,]
-Node 379 Moves 45
-Floor 4 [MSt,GTh,MTh,GEl,MEl,GDi,MDi,GPr,MPr,GRu,MRu,]
-Floor 3 []
-Floor>2 [MPl,]
-Floor 1 [GPl,GSt,]
-Node 380 Moves 46
-Floor 4 [MSt,GTh,MTh,GEl,MEl,GDi,MDi,GPr,MPr,GRu,MRu,]
-Floor 3 []
-Floor 2 []
-Floor>1 [GPl,GSt,MPl,]
-Node 383 Moves 47
-Floor 4 [MSt,GTh,MTh,GEl,MEl,GDi,MDi,GPr,MPr,GRu,MRu,]
-Floor 3 []
-Floor>2 [GPl,MPl,]
-Floor 1 [GSt,]
-Node 390 Moves 48
-Floor 4 [MSt,GTh,MTh,GEl,MEl,GDi,MDi,GPr,MPr,GRu,MRu,]
-Floor>3 [GPl,MPl,]
-Floor 2 []
-Floor 1 [GSt,]
-Node 395 Moves 49
-Floor>4 [MSt,GTh,MTh,GEl,MEl,GDi,MDi,GPr,MPr,GRu,MRu,GPl,MPl,]
-Floor 3 []
-Floor 2 []
-Floor 1 [GSt,]
-Node 400 Moves 50
-Floor 4 [GTh,MTh,GEl,MEl,GDi,MDi,GPr,MPr,GRu,MRu,GPl,MPl,]
-Floor>3 [MSt,]
-Floor 2 []
-Floor 1 [GSt,]
-Node 414 Moves 51
-Floor 4 [GTh,MTh,GEl,MEl,GDi,MDi,GPr,MPr,GRu,MRu,GPl,MPl,]
-Floor 3 []
-Floor>2 [MSt,]
-Floor 1 [GSt,]
-Node 415 Moves 52
-Floor 4 [GTh,MTh,GEl,MEl,GDi,MDi,GPr,MPr,GRu,MRu,GPl,MPl,]
-Floor 3 []
-Floor 2 []
-Floor>1 [GSt,MSt,]
-Node 418 Moves 53
-Floor 4 [GTh,MTh,GEl,MEl,GDi,MDi,GPr,MPr,GRu,MRu,GPl,MPl,]
-Floor 3 []
-Floor>2 [GSt,MSt,]
+Floor>3 [GSt,]
+Floor 2 [MHy,]
 Floor 1 []
-Node 422 Moves 54
-Floor 4 [GTh,MTh,GEl,MEl,GDi,MDi,GPr,MPr,GRu,MRu,GPl,MPl,]
-Floor>3 [GSt,MSt,]
-Floor 2 []
-Floor 1 []
-Node 425 Moves 55
-Floor>4 [GTh,MTh,GEl,MEl,GDi,MDi,GPr,MPr,GRu,MRu,GPl,MPl,GSt,MSt,]
+Node 686 Moves 3
+Floor>4 [GSt,]
 Floor 3 []
-Floor 2 []
+Floor 2 [MHy,]
 Floor 1 []
+Node 684 Moves 2
+Floor 4 []
+Floor>3 [GSt,]
+Floor 2 [MHy,]
+Floor 1 []
+Node 683 Moves 1
+Floor 4 []
+Floor 3 []
+Floor>2 [GSt,MHy,]
+Floor 1 []
+Node 685 Moves 2
+Floor 4 []
+Floor>3 [MHy,]
+Floor 2 [GSt,]
+Floor 1 []
+Node 693 Moves 3
+Floor>4 [MHy,]
+Floor 3 []
+Floor 2 [GSt,]
+Floor 1 []
+Node 685 Moves 2
+Floor 4 []
+Floor>3 [MHy,]
+Floor 2 [GSt,]
+Floor 1 []
+Node 683 Moves 1
+Floor 4 []
+Floor 3 []
+Floor>2 [GSt,MHy,]
+Floor 1 []
+Node 692 Moves 2
+Floor 4 []
+Floor>3 [MHy,]
+Floor 2 [GSt,]
+Floor 1 []
+Node 683 Moves 1
+Floor 4 []
+Floor 3 []
+Floor>2 [GSt,MHy,]
+Floor 1 []
+Node 0 Moves 0
+Floor 4 []
+Floor 3 []
+Floor 2 [GSt,]
+Floor>1 [MHy,]

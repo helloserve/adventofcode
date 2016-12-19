@@ -69,3 +69,7 @@ My decision hierarchy or prioritization are as follows:
 
 Problems I faced in trying to solve part 1 was mainly around incorrect constraint logic (was something fried?), stack overflows and also mismatched array indexes. Particularly for the latter, in my `Floor` class I keep the level of the floor in a property. This is a non-zero based value, e.g. Floor 1, 2 etc. In my `ScenarioNode` class however, the `FloorIndex` property is zero based because it is used as the direct index (read position) of the evelator in that state. In checking the lower floors for content, I had these two misaligned, and not all the floors were considered. Regarding the stack overflows, initially I had a self-traversing recursive method in the `ScenarioNode` class, but this very quickly became a problem, forcing me to switch to an outside state-managed node traverse loop.
 The problem I faced in trying to solve part 2 was again a constraint one. I just had to add code to check the previous floor the elevator was at at every state to make sure that we did not create a **fried** scenario when we moved stuff away. In fact, I'm quiite surprized that part 1 passed without this piece of code.
+
+### Day 12
+
+Firstly, the instruction doesn't mention what the `jnz` command does when `x` is zero. I assumed it simply moves to the next instruction, which would be the equivalent of `jnz 1 1`. This is of course because of my design where I absolutely rely on the result of that command to leave my at the correct instruction regardless of the input.
