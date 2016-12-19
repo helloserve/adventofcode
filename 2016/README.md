@@ -72,4 +72,4 @@ The problem I faced in trying to solve part 2 was again a constraint one. I just
 
 ### Day 12
 
-Firstly, the instruction doesn't mention what the `jnz` command does when `x` is zero. I assumed it simply moves to the next instruction, which would be the equivalent of `jnz 1 1`. This is of course because of my design where I absolutely rely on the result of that command to leave my at the correct instruction regardless of the input.
+The instructions doesn't mention what the `jnz` command does when `x` is zero. I assumed it simply moves to the next instruction, which would be the equivalent of `jnz 1 1`. This fits in with my design where I absolutely rely on the result of the command to leave my at the correct instruction regardless of the input. Part 2 was simply passing an initial state.

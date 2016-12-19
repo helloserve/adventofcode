@@ -77,5 +77,11 @@ namespace helloserve.com.AdventOfCode.Tests
         {
             Assert.True(verses.Part1(ReadTextSource("12.txt"), "a") == 317993);
         }
+
+        [Fact]
+        public void Part2_Part2()
+        {
+            Assert.True(verses.Part1(ReadTextSource("12.txt"), "a", new int[] { 0, 0, 1, 0 }) == 9227647);
+        }
     }
 }

@@ -128,8 +128,9 @@ namespace helloserve.com.AdventOfCode
         private int[] _registers = new int[4];
         private int _commandIndex;
 
-        public int Part1(string input, string fromRegister)
+        public int Part1(string input, string fromRegister, int[] initialState = null)
         {
+            _registers = initialState ?? new int[] { 0, 0, 0, 0 };
             string[] lines = input.Split(new char[] { '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries);
             Execute(lines);
             return _registers[Reg(fromRegister)];
