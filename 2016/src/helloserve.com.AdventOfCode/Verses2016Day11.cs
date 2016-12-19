@@ -11,11 +11,12 @@ namespace helloserve.com.AdventOfCode
     {
         private ScenarioNode _currentNode = new ScenarioNode();
 
-        public int? Part1(string input)
+        public int? Part1(string input, int startElevatorOnFloor = 1)
         {
             InitializeOutput(".\\output\\11.1.txt");
 
             input.Split(new char[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries).ToList().ForEach(l => PopulateFloor(l));
+            _currentNode.FloorIndex = startElevatorOnFloor - 1;
 
             int? result = null;
             while (_currentNode != null)
@@ -201,13 +202,22 @@ namespace helloserve.com.AdventOfCode
 
         private bool Cooked()
         {
+            bool result = FloorCooked(FloorIndex);
+            if (PreviousNode != null)
+                result &= FloorCooked(PreviousNode.FloorIndex); //also check the floor that we moved stuff from
+
+            return result;
+        }
+
+        private bool FloorCooked(int floorIndex)
+        {
             List<int> singleItems = new List<int>();
             AssemblyItem item;
 
-            for (int i = 0; i < Floors[FloorIndex].Items.Count; i++)
+            for (int i = 0; i < Floors[floorIndex].Items.Count; i++)
             {
-                item = Items[Floors[FloorIndex].Items[i]];
-                if (Floors[FloorIndex].Items.Any(x => item.Fit(Items[x])) && item is Microchip)
+                item = Items[Floors[floorIndex].Items[i]];
+                if (Floors[floorIndex].Items.Any(x => item.Fit(Items[x])) && item is Microchip)
                     continue;
 
                 singleItems.Add(i);
@@ -215,8 +225,8 @@ namespace helloserve.com.AdventOfCode
 
             for (int i = 0; i < singleItems.Count; i++)
             {
-                item = Items[Floors[FloorIndex].Items[singleItems[i]]];
-                if (singleItems.Any(x => item.Fried(Items[Floors[FloorIndex].Items[x]])))
+                item = Items[Floors[floorIndex].Items[singleItems[i]]];
+                if (singleItems.Any(x => item.Fried(Items[Floors[floorIndex].Items[x]])))
                     return true;
             }
 
@@ -420,7 +430,7 @@ namespace helloserve.com.AdventOfCode
 
         public override string ToString()
         {
-            return $"{GetType().Name.Substring(0, 1)}{Isotope.Substring(0, 1).ToUpper()}";
+            return $"{GetType().Name.Substring(0, 1)}{Isotope.Substring(0, 1).ToUpper()}{Isotope.Substring(1, 1).ToLower()}";
         }
     };
 

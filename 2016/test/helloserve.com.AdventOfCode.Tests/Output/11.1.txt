@@ -1,460 +1,280 @@
 Node 0 Moves 0
 Floor 4 []
-Floor 3 [GP,MP,GR,MR,]
-Floor 2 [MP,MS,]
-Floor>1 [GT,MT,GP,GS,]
+Floor 3 [GPr,MPr,GRu,MRu,]
+Floor 2 [MPl,MSt,]
+Floor>1 [GTh,MTh,GPl,GSt,GEl,MEl,GDi,MDi,]
 Node 1 Moves 1
 Floor 4 []
-Floor 3 [GP,MP,GR,MR,]
-Floor>2 [MP,MS,GT,MT,]
-Floor 1 [GP,GS,]
-Node 0 Moves 0
+Floor 3 [GPr,MPr,GRu,MRu,]
+Floor>2 [MPl,MSt,GTh,MTh,]
+Floor 1 [GPl,GSt,GEl,MEl,GDi,MDi,]
+Node 43 Moves 2
 Floor 4 []
-Floor 3 [GP,MP,GR,MR,]
-Floor 2 [MP,MS,]
-Floor>1 [GT,MT,GP,GS,]
-Node 2 Moves 1
-Floor 4 []
-Floor 3 [GP,MP,GR,MR,]
-Floor>2 [MP,MS,GP,GT,]
-Floor 1 [MT,GS,]
-Node 0 Moves 0
-Floor 4 []
-Floor 3 [GP,MP,GR,MR,]
-Floor 2 [MP,MS,]
-Floor>1 [GT,MT,GP,GS,]
-Node 3 Moves 1
-Floor 4 []
-Floor 3 [GP,MP,GR,MR,]
-Floor>2 [MP,MS,GS,GT,]
-Floor 1 [MT,GP,]
-Node 0 Moves 0
-Floor 4 []
-Floor 3 [GP,MP,GR,MR,]
-Floor 2 [MP,MS,]
-Floor>1 [GT,MT,GP,GS,]
-Node 4 Moves 1
-Floor 4 []
-Floor 3 [GP,MP,GR,MR,]
-Floor>2 [MP,MS,GS,GP,]
-Floor 1 [GT,MT,]
-Node 57 Moves 2
-Floor 4 []
-Floor>3 [GP,MP,GR,MR,MS,GS,]
-Floor 2 [MP,GP,]
-Floor 1 [GT,MT,]
-Node 69 Moves 3
-Floor>4 [GP,MP,]
-Floor 3 [GR,MR,MS,GS,]
-Floor 2 [MP,GP,]
-Floor 1 [GT,MT,]
-Node 90 Moves 4
-Floor 4 [MP,]
-Floor>3 [GR,MR,MS,GS,GP,]
-Floor 2 [MP,GP,]
-Floor 1 [GT,MT,]
-Node 92 Moves 5
-Floor>4 [MP,GR,MR,]
-Floor 3 [MS,GS,GP,]
-Floor 2 [MP,GP,]
-Floor 1 [GT,MT,]
-Node 90 Moves 4
-Floor 4 [MP,]
-Floor>3 [GR,MR,MS,GS,GP,]
-Floor 2 [MP,GP,]
-Floor 1 [GT,MT,]
-Node 93 Moves 5
-Floor>4 [MP,MS,GS,]
-Floor 3 [GR,MR,GP,]
-Floor 2 [MP,GP,]
-Floor 1 [GT,MT,]
-Node 90 Moves 4
-Floor 4 [MP,]
-Floor>3 [GR,MR,MS,GS,GP,]
-Floor 2 [MP,GP,]
-Floor 1 [GT,MT,]
-Node 94 Moves 5
-Floor>4 [MP,MS,MR,]
-Floor 3 [GR,GS,GP,]
-Floor 2 [MP,GP,]
-Floor 1 [GT,MT,]
-Node 143 Moves 6
-Floor 4 [MP,MS,]
-Floor>3 [GR,GS,GP,MR,]
-Floor 2 [MP,GP,]
-Floor 1 [GT,MT,]
-Node 149 Moves 7
-Floor>4 [MP,MS,GR,MR,]
-Floor 3 [GS,GP,]
-Floor 2 [MP,GP,]
-Floor 1 [GT,MT,]
-Node 143 Moves 6
-Floor 4 [MP,MS,]
-Floor>3 [GR,GS,GP,MR,]
-Floor 2 [MP,GP,]
-Floor 1 [GT,MT,]
-Node 150 Moves 7
-Floor>4 [MP,MS,GS,GR,]
-Floor 3 [GP,MR,]
-Floor 2 [MP,GP,]
-Floor 1 [GT,MT,]
-Node 143 Moves 6
-Floor 4 [MP,MS,]
-Floor>3 [GR,GS,GP,MR,]
-Floor 2 [MP,GP,]
-Floor 1 [GT,MT,]
-Node 151 Moves 7
-Floor>4 [MP,MS,GP,GR,]
-Floor 3 [GS,MR,]
-Floor 2 [MP,GP,]
-Floor 1 [GT,MT,]
-Node 143 Moves 6
-Floor 4 [MP,MS,]
-Floor>3 [GR,GS,GP,MR,]
-Floor 2 [MP,GP,]
-Floor 1 [GT,MT,]
-Node 152 Moves 7
-Floor>4 [MP,MS,GP,GS,]
-Floor 3 [GR,MR,]
-Floor 2 [MP,GP,]
-Floor 1 [GT,MT,]
-Node 205 Moves 8
-Floor 4 [MS,GP,GS,]
-Floor>3 [GR,MR,MP,]
-Floor 2 [MP,GP,]
-Floor 1 [GT,MT,]
-Node 152 Moves 7
-Floor>4 [MP,MS,GP,GS,]
-Floor 3 [GR,MR,]
-Floor 2 [MP,GP,]
-Floor 1 [GT,MT,]
-Node 206 Moves 8
-Floor 4 [MP,GP,GS,]
-Floor>3 [GR,MR,MS,]
-Floor 2 [MP,GP,]
-Floor 1 [GT,MT,]
-Node 152 Moves 7
-Floor>4 [MP,MS,GP,GS,]
-Floor 3 [GR,MR,]
-Floor 2 [MP,GP,]
-Floor 1 [GT,MT,]
-Node 207 Moves 8
-Floor 4 [MP,MS,GS,]
-Floor>3 [GR,MR,GP,]
-Floor 2 [MP,GP,]
-Floor 1 [GT,MT,]
-Node 217 Moves 9
-Floor>4 [MP,MS,GS,GR,MR,]
-Floor 3 [GP,]
-Floor 2 [MP,GP,]
-Floor 1 [GT,MT,]
-Node 207 Moves 8
-Floor 4 [MP,MS,GS,]
-Floor>3 [GR,MR,GP,]
-Floor 2 [MP,GP,]
-Floor 1 [GT,MT,]
-Node 218 Moves 9
-Floor>4 [MP,MS,GS,GP,GR,]
-Floor 3 [MR,]
-Floor 2 [MP,GP,]
-Floor 1 [GT,MT,]
-Node 235 Moves 10
-Floor 4 [MP,MS,GS,GP,]
-Floor>3 [MR,GR,]
-Floor 2 [MP,GP,]
-Floor 1 [GT,MT,]
-Node 241 Moves 11
-Floor>4 [MP,MS,GS,GP,MR,GR,]
+Floor>3 [GPr,MPr,GRu,MRu,GTh,MTh,]
+Floor 2 [MPl,MSt,]
+Floor 1 [GPl,GSt,GEl,MEl,GDi,MDi,]
+Node 57 Moves 3
+Floor>4 [GPr,MPr,]
+Floor 3 [GRu,MRu,GTh,MTh,]
+Floor 2 [MPl,MSt,]
+Floor 1 [GPl,GSt,GEl,MEl,GDi,MDi,]
+Node 78 Moves 4
+Floor 4 [MPr,]
+Floor>3 [GRu,MRu,GTh,MTh,GPr,]
+Floor 2 [MPl,MSt,]
+Floor 1 [GPl,GSt,GEl,MEl,GDi,MDi,]
+Node 80 Moves 5
+Floor>4 [MPr,GRu,MRu,]
+Floor 3 [GTh,MTh,GPr,]
+Floor 2 [MPl,MSt,]
+Floor 1 [GPl,GSt,GEl,MEl,GDi,MDi,]
+Node 97 Moves 6
+Floor 4 [GRu,MRu,]
+Floor>3 [GTh,MTh,GPr,MPr,]
+Floor 2 [MPl,MSt,]
+Floor 1 [GPl,GSt,GEl,MEl,GDi,MDi,]
+Node 101 Moves 7
+Floor>4 [GRu,MRu,GTh,MTh,]
+Floor 3 [GPr,MPr,]
+Floor 2 [MPl,MSt,]
+Floor 1 [GPl,GSt,GEl,MEl,GDi,MDi,]
+Node 113 Moves 8
+Floor 4 [MRu,GTh,MTh,]
+Floor>3 [GPr,MPr,GRu,]
+Floor 2 [MPl,MSt,]
+Floor 1 [GPl,GSt,GEl,MEl,GDi,MDi,]
+Node 117 Moves 9
+Floor>4 [MRu,GTh,MTh,GPr,MPr,]
+Floor 3 [GRu,]
+Floor 2 [MPl,MSt,]
+Floor 1 [GPl,GSt,GEl,MEl,GDi,MDi,]
+Node 126 Moves 10
+Floor 4 [GTh,MTh,GPr,MPr,]
+Floor>3 [GRu,MRu,]
+Floor 2 [MPl,MSt,]
+Floor 1 [GPl,GSt,GEl,MEl,GDi,MDi,]
+Node 132 Moves 11
+Floor>4 [GTh,MTh,GPr,MPr,GRu,MRu,]
 Floor 3 []
-Floor 2 [MP,GP,]
-Floor 1 [GT,MT,]
-Node 246 Moves 12
-Floor 4 [MS,GS,GP,MR,GR,]
-Floor>3 [MP,]
-Floor 2 [MP,GP,]
-Floor 1 [GT,MT,]
-Node 254 Moves 13
-Floor 4 [MS,GS,GP,MR,GR,]
+Floor 2 [MPl,MSt,]
+Floor 1 [GPl,GSt,GEl,MEl,GDi,MDi,]
+Node 137 Moves 12
+Floor 4 [MTh,GPr,MPr,GRu,MRu,]
+Floor>3 [GTh,]
+Floor 2 [MPl,MSt,]
+Floor 1 [GPl,GSt,GEl,MEl,GDi,MDi,]
+Node 145 Moves 13
+Floor 4 [MTh,GPr,MPr,GRu,MRu,]
 Floor 3 []
-Floor>2 [MP,GP,MP,]
-Floor 1 [GT,MT,]
-Node 246 Moves 12
-Floor 4 [MS,GS,GP,MR,GR,]
-Floor>3 [MP,]
-Floor 2 [MP,GP,]
-Floor 1 [GT,MT,]
-Node 241 Moves 11
-Floor>4 [MP,MS,GS,GP,MR,GR,]
+Floor>2 [MPl,MSt,GTh,]
+Floor 1 [GPl,GSt,GEl,MEl,GDi,MDi,]
+Node 146 Moves 14
+Floor 4 [MTh,GPr,MPr,GRu,MRu,]
+Floor>3 [MSt,MPl,]
+Floor 2 [GTh,]
+Floor 1 [GPl,GSt,GEl,MEl,GDi,MDi,]
+Node 155 Moves 15
+Floor>4 [MTh,GPr,MPr,GRu,MRu,MPl,MSt,]
 Floor 3 []
-Floor 2 [MP,GP,]
-Floor 1 [GT,MT,]
-Node 247 Moves 12
-Floor 4 [MP,GS,GP,MR,GR,]
-Floor>3 [MS,]
-Floor 2 [MP,GP,]
-Floor 1 [GT,MT,]
-Node 266 Moves 13
-Floor 4 [MP,GS,GP,MR,GR,]
+Floor 2 [GTh,]
+Floor 1 [GPl,GSt,GEl,MEl,GDi,MDi,]
+Node 160 Moves 16
+Floor 4 [GPr,MPr,GRu,MRu,MPl,MSt,]
+Floor>3 [MTh,]
+Floor 2 [GTh,]
+Floor 1 [GPl,GSt,GEl,MEl,GDi,MDi,]
+Node 167 Moves 17
+Floor 4 [GPr,MPr,GRu,MRu,MPl,MSt,]
 Floor 3 []
-Floor>2 [MP,GP,MS,]
-Floor 1 [GT,MT,]
-Node 247 Moves 12
-Floor 4 [MP,GS,GP,MR,GR,]
-Floor>3 [MS,]
-Floor 2 [MP,GP,]
-Floor 1 [GT,MT,]
-Node 241 Moves 11
-Floor>4 [MP,MS,GS,GP,MR,GR,]
-Floor 3 []
-Floor 2 [MP,GP,]
-Floor 1 [GT,MT,]
-Node 248 Moves 12
-Floor 4 [MP,MS,GP,MR,GR,]
-Floor>3 [GS,]
-Floor 2 [MP,GP,]
-Floor 1 [GT,MT,]
-Node 278 Moves 13
-Floor 4 [MP,MS,GP,MR,GR,]
-Floor 3 []
-Floor>2 [MP,GP,GS,]
-Floor 1 [GT,MT,]
-Node 279 Moves 14
-Floor 4 [MP,MS,GP,MR,GR,]
-Floor>3 [MP,GP,]
-Floor 2 [GS,]
-Floor 1 [GT,MT,]
-Node 287 Moves 15
-Floor>4 [MP,MS,GP,MR,GR,MP,GP,]
-Floor 3 []
-Floor 2 [GS,]
-Floor 1 [GT,MT,]
-Node 279 Moves 14
-Floor 4 [MP,MS,GP,MR,GR,]
-Floor>3 [MP,GP,]
-Floor 2 [GS,]
-Floor 1 [GT,MT,]
-Node 288 Moves 15
-Floor>4 [MP,MS,GP,MR,GR,MP,]
-Floor 3 [GP,]
-Floor 2 [GS,]
-Floor 1 [GT,MT,]
-Node 279 Moves 14
-Floor 4 [MP,MS,GP,MR,GR,]
-Floor>3 [MP,GP,]
-Floor 2 [GS,]
-Floor 1 [GT,MT,]
-Node 289 Moves 15
-Floor>4 [MP,MS,GP,MR,GR,GP,]
-Floor 3 [MP,]
-Floor 2 [GS,]
-Floor 1 [GT,MT,]
-Node 279 Moves 14
-Floor 4 [MP,MS,GP,MR,GR,]
-Floor>3 [MP,GP,]
-Floor 2 [GS,]
-Floor 1 [GT,MT,]
-Node 290 Moves 15
-Floor 4 [MP,MS,GP,MR,GR,]
-Floor 3 [GP,]
-Floor>2 [GS,MP,]
-Floor 1 [GT,MT,]
-Node 279 Moves 14
-Floor 4 [MP,MS,GP,MR,GR,]
-Floor>3 [MP,GP,]
-Floor 2 [GS,]
-Floor 1 [GT,MT,]
-Node 291 Moves 15
-Floor 4 [MP,MS,GP,MR,GR,]
-Floor 3 [MP,]
-Floor>2 [GS,GP,]
-Floor 1 [GT,MT,]
-Node 312 Moves 16
-Floor 4 [MP,MS,GP,MR,GR,]
-Floor>3 [MP,GP,GS,]
+Floor>2 [GTh,MTh,]
+Floor 1 [GPl,GSt,GEl,MEl,GDi,MDi,]
+Node 170 Moves 18
+Floor 4 [GPr,MPr,GRu,MRu,MPl,MSt,]
+Floor>3 [GTh,MTh,]
 Floor 2 []
-Floor 1 [GT,MT,]
-Node 318 Moves 17
-Floor>4 [MP,MS,GP,MR,GR,MP,GP,]
-Floor 3 [GS,]
-Floor 2 []
-Floor 1 [GT,MT,]
-Node 312 Moves 16
-Floor 4 [MP,MS,GP,MR,GR,]
-Floor>3 [MP,GP,GS,]
-Floor 2 []
-Floor 1 [GT,MT,]
-Node 319 Moves 17
-Floor>4 [MP,MS,GP,MR,GR,GS,GP,]
-Floor 3 [MP,]
-Floor 2 []
-Floor 1 [GT,MT,]
-Node 336 Moves 18
-Floor 4 [MP,MS,GP,MR,GR,GS,]
-Floor>3 [MP,GP,]
-Floor 2 []
-Floor 1 [GT,MT,]
-Node 344 Moves 19
-Floor>4 [MP,MS,GP,MR,GR,GS,MP,GP,]
+Floor 1 [GPl,GSt,GEl,MEl,GDi,MDi,]
+Node 175 Moves 19
+Floor>4 [GPr,MPr,GRu,MRu,MPl,MSt,GTh,MTh,]
 Floor 3 []
 Floor 2 []
-Floor 1 [GT,MT,]
-Node 349 Moves 20
-Floor 4 [MS,GP,MR,GR,GS,MP,GP,]
-Floor>3 [MP,]
+Floor 1 [GPl,GSt,GEl,MEl,GDi,MDi,]
+Node 180 Moves 20
+Floor 4 [MPr,GRu,MRu,MPl,MSt,GTh,MTh,]
+Floor>3 [GPr,]
 Floor 2 []
-Floor 1 [GT,MT,]
-Node 359 Moves 21
-Floor 4 [MS,GP,MR,GR,GS,MP,GP,]
+Floor 1 [GPl,GSt,GEl,MEl,GDi,MDi,]
+Node 190 Moves 21
+Floor 4 [MPr,GRu,MRu,MPl,MSt,GTh,MTh,]
 Floor 3 []
-Floor>2 [MP,]
-Floor 1 [GT,MT,]
-Node 361 Moves 22
-Floor 4 [MS,GP,MR,GR,GS,MP,GP,]
-Floor 3 []
-Floor 2 []
-Floor>1 [GT,MT,MP,]
-Node 359 Moves 21
-Floor 4 [MS,GP,MR,GR,GS,MP,GP,]
-Floor 3 []
-Floor>2 [MP,]
-Floor 1 [GT,MT,]
-Node 349 Moves 20
-Floor 4 [MS,GP,MR,GR,GS,MP,GP,]
-Floor>3 [MP,]
-Floor 2 []
-Floor 1 [GT,MT,]
-Node 344 Moves 19
-Floor>4 [MP,MS,GP,MR,GR,GS,MP,GP,]
+Floor>2 [GPr,]
+Floor 1 [GPl,GSt,GEl,MEl,GDi,MDi,]
+Node 192 Moves 22
+Floor 4 [MPr,GRu,MRu,MPl,MSt,GTh,MTh,]
 Floor 3 []
 Floor 2 []
-Floor 1 [GT,MT,]
-Node 350 Moves 20
-Floor 4 [MP,GP,MR,GR,GS,MP,GP,]
-Floor>3 [MS,]
-Floor 2 []
-Floor 1 [GT,MT,]
-Node 377 Moves 21
-Floor 4 [MP,GP,MR,GR,GS,MP,GP,]
+Floor>1 [GPl,GSt,GEl,MEl,GDi,MDi,GPr,]
+Node 193 Moves 23
+Floor 4 [MPr,GRu,MRu,MPl,MSt,GTh,MTh,]
 Floor 3 []
-Floor>2 [MS,]
-Floor 1 [GT,MT,]
-Node 379 Moves 22
-Floor 4 [MP,GP,MR,GR,GS,MP,GP,]
-Floor 3 []
+Floor>2 [GEl,MEl,]
+Floor 1 [GPl,GSt,GDi,MDi,GPr,]
+Node 226 Moves 24
+Floor 4 [MPr,GRu,MRu,MPl,MSt,GTh,MTh,]
+Floor>3 [GEl,MEl,]
 Floor 2 []
-Floor>1 [GT,MT,MS,]
-Node 377 Moves 21
-Floor 4 [MP,GP,MR,GR,GS,MP,GP,]
-Floor 3 []
-Floor>2 [MS,]
-Floor 1 [GT,MT,]
-Node 350 Moves 20
-Floor 4 [MP,GP,MR,GR,GS,MP,GP,]
-Floor>3 [MS,]
-Floor 2 []
-Floor 1 [GT,MT,]
-Node 344 Moves 19
-Floor>4 [MP,MS,GP,MR,GR,GS,MP,GP,]
+Floor 1 [GPl,GSt,GDi,MDi,GPr,]
+Node 231 Moves 25
+Floor>4 [MPr,GRu,MRu,MPl,MSt,GTh,MTh,GEl,MEl,]
 Floor 3 []
 Floor 2 []
-Floor 1 [GT,MT,]
-Node 351 Moves 20
-Floor 4 [MP,MS,MR,GR,GS,MP,GP,]
-Floor>3 [GP,]
+Floor 1 [GPl,GSt,GDi,MDi,GPr,]
+Node 236 Moves 26
+Floor 4 [GRu,MRu,MPl,MSt,GTh,MTh,GEl,MEl,]
+Floor>3 [MPr,]
 Floor 2 []
-Floor 1 [GT,MT,]
-Node 395 Moves 21
-Floor 4 [MP,MS,MR,GR,GS,MP,GP,]
+Floor 1 [GPl,GSt,GDi,MDi,GPr,]
+Node 246 Moves 27
+Floor 4 [GRu,MRu,MPl,MSt,GTh,MTh,GEl,MEl,]
 Floor 3 []
-Floor>2 [GP,]
-Floor 1 [GT,MT,]
-Node 397 Moves 22
-Floor 4 [MP,MS,MR,GR,GS,MP,GP,]
-Floor 3 []
-Floor 2 []
-Floor>1 [GT,MT,GP,]
-Node 398 Moves 23
-Floor 4 [MP,MS,MR,GR,GS,MP,GP,]
-Floor 3 []
-Floor>2 [GT,MT,]
-Floor 1 [GP,]
-Node 405 Moves 24
-Floor 4 [MP,MS,MR,GR,GS,MP,GP,]
-Floor>3 [GT,MT,]
-Floor 2 []
-Floor 1 [GP,]
-Node 410 Moves 25
-Floor>4 [MP,MS,MR,GR,GS,MP,GP,GT,MT,]
+Floor>2 [MPr,]
+Floor 1 [GPl,GSt,GDi,MDi,GPr,]
+Node 247 Moves 28
+Floor 4 [GRu,MRu,MPl,MSt,GTh,MTh,GEl,MEl,]
 Floor 3 []
 Floor 2 []
-Floor 1 [GP,]
-Node 405 Moves 24
-Floor 4 [MP,MS,MR,GR,GS,MP,GP,]
-Floor>3 [GT,MT,]
+Floor>1 [GPl,GSt,GDi,MDi,GPr,MPr,]
+Node 250 Moves 29
+Floor 4 [GRu,MRu,MPl,MSt,GTh,MTh,GEl,MEl,]
+Floor 3 []
+Floor>2 [GDi,MDi,]
+Floor 1 [GPl,GSt,GPr,MPr,]
+Node 274 Moves 30
+Floor 4 [GRu,MRu,MPl,MSt,GTh,MTh,GEl,MEl,]
+Floor>3 [GDi,MDi,]
 Floor 2 []
-Floor 1 [GP,]
-Node 411 Moves 25
-Floor>4 [MP,MS,MR,GR,GS,MP,GP,GT,]
-Floor 3 [MT,]
+Floor 1 [GPl,GSt,GPr,MPr,]
+Node 279 Moves 31
+Floor>4 [GRu,MRu,MPl,MSt,GTh,MTh,GEl,MEl,GDi,MDi,]
+Floor 3 []
 Floor 2 []
-Floor 1 [GP,]
-Node 405 Moves 24
-Floor 4 [MP,MS,MR,GR,GS,MP,GP,]
-Floor>3 [GT,MT,]
+Floor 1 [GPl,GSt,GPr,MPr,]
+Node 284 Moves 32
+Floor 4 [MRu,MPl,MSt,GTh,MTh,GEl,MEl,GDi,MDi,]
+Floor>3 [GRu,]
 Floor 2 []
-Floor 1 [GP,]
-Node 412 Moves 25
-Floor>4 [MP,MS,MR,GR,GS,MP,GP,MT,]
-Floor 3 [GT,]
+Floor 1 [GPl,GSt,GPr,MPr,]
+Node 296 Moves 33
+Floor 4 [MRu,MPl,MSt,GTh,MTh,GEl,MEl,GDi,MDi,]
+Floor 3 []
+Floor>2 [GRu,]
+Floor 1 [GPl,GSt,GPr,MPr,]
+Node 298 Moves 34
+Floor 4 [MRu,MPl,MSt,GTh,MTh,GEl,MEl,GDi,MDi,]
+Floor 3 []
 Floor 2 []
-Floor 1 [GP,]
-Node 405 Moves 24
-Floor 4 [MP,MS,MR,GR,GS,MP,GP,]
-Floor>3 [GT,MT,]
+Floor>1 [GPl,GSt,GPr,MPr,GRu,]
+Node 299 Moves 35
+Floor 4 [MRu,MPl,MSt,GTh,MTh,GEl,MEl,GDi,MDi,]
+Floor 3 []
+Floor>2 [GPr,MPr,]
+Floor 1 [GPl,GSt,GRu,]
+Node 318 Moves 36
+Floor 4 [MRu,MPl,MSt,GTh,MTh,GEl,MEl,GDi,MDi,]
+Floor>3 [GPr,MPr,]
 Floor 2 []
-Floor 1 [GP,]
-Node 413 Moves 25
-Floor 4 [MP,MS,MR,GR,GS,MP,GP,]
-Floor 3 [MT,]
-Floor>2 [GT,]
-Floor 1 [GP,]
-Node 432 Moves 26
-Floor 4 [MP,MS,MR,GR,GS,MP,GP,]
-Floor 3 [MT,]
+Floor 1 [GPl,GSt,GRu,]
+Node 323 Moves 37
+Floor>4 [MRu,MPl,MSt,GTh,MTh,GEl,MEl,GDi,MDi,GPr,MPr,]
+Floor 3 []
 Floor 2 []
-Floor>1 [GP,GT,]
-Node 433 Moves 27
-Floor 4 [MP,MS,MR,GR,GS,MP,GP,]
-Floor 3 [MT,]
-Floor>2 [GT,GP,]
+Floor 1 [GPl,GSt,GRu,]
+Node 328 Moves 38
+Floor 4 [MPl,MSt,GTh,MTh,GEl,MEl,GDi,MDi,GPr,MPr,]
+Floor>3 [MRu,]
+Floor 2 []
+Floor 1 [GPl,GSt,GRu,]
+Node 340 Moves 39
+Floor 4 [MPl,MSt,GTh,MTh,GEl,MEl,GDi,MDi,GPr,MPr,]
+Floor 3 []
+Floor>2 [MRu,]
+Floor 1 [GPl,GSt,GRu,]
+Node 341 Moves 40
+Floor 4 [MPl,MSt,GTh,MTh,GEl,MEl,GDi,MDi,GPr,MPr,]
+Floor 3 []
+Floor 2 []
+Floor>1 [GPl,GSt,GRu,MRu,]
+Node 344 Moves 41
+Floor 4 [MPl,MSt,GTh,MTh,GEl,MEl,GDi,MDi,GPr,MPr,]
+Floor 3 []
+Floor>2 [GRu,MRu,]
+Floor 1 [GPl,GSt,]
+Node 356 Moves 42
+Floor 4 [MPl,MSt,GTh,MTh,GEl,MEl,GDi,MDi,GPr,MPr,]
+Floor>3 [GRu,MRu,]
+Floor 2 []
+Floor 1 [GPl,GSt,]
+Node 361 Moves 43
+Floor>4 [MPl,MSt,GTh,MTh,GEl,MEl,GDi,MDi,GPr,MPr,GRu,MRu,]
+Floor 3 []
+Floor 2 []
+Floor 1 [GPl,GSt,]
+Node 366 Moves 44
+Floor 4 [MSt,GTh,MTh,GEl,MEl,GDi,MDi,GPr,MPr,GRu,MRu,]
+Floor>3 [MPl,]
+Floor 2 []
+Floor 1 [GPl,GSt,]
+Node 379 Moves 45
+Floor 4 [MSt,GTh,MTh,GEl,MEl,GDi,MDi,GPr,MPr,GRu,MRu,]
+Floor 3 []
+Floor>2 [MPl,]
+Floor 1 [GPl,GSt,]
+Node 380 Moves 46
+Floor 4 [MSt,GTh,MTh,GEl,MEl,GDi,MDi,GPr,MPr,GRu,MRu,]
+Floor 3 []
+Floor 2 []
+Floor>1 [GPl,GSt,MPl,]
+Node 383 Moves 47
+Floor 4 [MSt,GTh,MTh,GEl,MEl,GDi,MDi,GPr,MPr,GRu,MRu,]
+Floor 3 []
+Floor>2 [GPl,MPl,]
+Floor 1 [GSt,]
+Node 390 Moves 48
+Floor 4 [MSt,GTh,MTh,GEl,MEl,GDi,MDi,GPr,MPr,GRu,MRu,]
+Floor>3 [GPl,MPl,]
+Floor 2 []
+Floor 1 [GSt,]
+Node 395 Moves 49
+Floor>4 [MSt,GTh,MTh,GEl,MEl,GDi,MDi,GPr,MPr,GRu,MRu,GPl,MPl,]
+Floor 3 []
+Floor 2 []
+Floor 1 [GSt,]
+Node 400 Moves 50
+Floor 4 [GTh,MTh,GEl,MEl,GDi,MDi,GPr,MPr,GRu,MRu,GPl,MPl,]
+Floor>3 [MSt,]
+Floor 2 []
+Floor 1 [GSt,]
+Node 414 Moves 51
+Floor 4 [GTh,MTh,GEl,MEl,GDi,MDi,GPr,MPr,GRu,MRu,GPl,MPl,]
+Floor 3 []
+Floor>2 [MSt,]
+Floor 1 [GSt,]
+Node 415 Moves 52
+Floor 4 [GTh,MTh,GEl,MEl,GDi,MDi,GPr,MPr,GRu,MRu,GPl,MPl,]
+Floor 3 []
+Floor 2 []
+Floor>1 [GSt,MSt,]
+Node 418 Moves 53
+Floor 4 [GTh,MTh,GEl,MEl,GDi,MDi,GPr,MPr,GRu,MRu,GPl,MPl,]
+Floor 3 []
+Floor>2 [GSt,MSt,]
 Floor 1 []
-Node 437 Moves 28
-Floor 4 [MP,MS,MR,GR,GS,MP,GP,]
-Floor>3 [MT,GP,GT,]
+Node 422 Moves 54
+Floor 4 [GTh,MTh,GEl,MEl,GDi,MDi,GPr,MPr,GRu,MRu,GPl,MPl,]
+Floor>3 [GSt,MSt,]
 Floor 2 []
 Floor 1 []
-Node 441 Moves 29
-Floor>4 [MP,MS,MR,GR,GS,MP,GP,MT,GT,]
-Floor 3 [GP,]
-Floor 2 []
-Floor 1 []
-Node 437 Moves 28
-Floor 4 [MP,MS,MR,GR,GS,MP,GP,]
-Floor>3 [MT,GP,GT,]
-Floor 2 []
-Floor 1 []
-Node 442 Moves 29
-Floor>4 [MP,MS,MR,GR,GS,MP,GP,GT,GP,]
-Floor 3 [MT,]
-Floor 2 []
-Floor 1 []
-Node 453 Moves 30
-Floor 4 [MP,MS,MR,GR,GS,MP,GP,GP,]
-Floor>3 [MT,GT,]
-Floor 2 []
-Floor 1 []
-Node 463 Moves 31
-Floor>4 [MP,MS,MR,GR,GS,MP,GP,GP,MT,GT,]
+Node 425 Moves 55
+Floor>4 [GTh,MTh,GEl,MEl,GDi,MDi,GPr,MPr,GRu,MRu,GPl,MPl,GSt,MSt,]
 Floor 3 []
 Floor 2 []
 Floor 1 []

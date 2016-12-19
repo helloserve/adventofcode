@@ -34,5 +34,14 @@ namespace helloserve.com.AdventOfCode.Tests
             verses = new Verses2016Day11();
             Assert.True(verses.Part1(ReadTextSource("11.txt")) == 31);
         }
+
+        [Fact]
+        public void Part2_Part1()
+        {
+            verses = new Verses2016Day11();
+            string input = ReadTextSource("11.txt");
+            input += "\r\nThe first floor contains a elerium generator, a elerium-compatible microchip, a dilithium generator, and a dilithium-compatible microchip.";
+            Assert.True(verses.Part1(input) == 55);
+        }
     }
 }
