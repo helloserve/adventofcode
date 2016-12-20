@@ -3,6 +3,7 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace helloserve.com.AdventOfCode.Base
@@ -49,12 +50,19 @@ namespace helloserve.com.AdventOfCode.Base
 
         public void LogOutput(string filename, string contents)
         {
-
             lock (FileLock(filename))
             {
                 File.AppendAllText(filename, contents);
             }
         }
+        public void DumpOutput(string filename, string contents, Encoding encoding)
+        {
+            lock (FileLock(filename))
+            {
+                File.WriteAllText(filename, contents, encoding);
+            }
+        }
+
 
         private object FileLock(string filename)
         {
