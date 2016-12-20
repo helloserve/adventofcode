@@ -11,9 +11,9 @@ namespace helloserve.com.AdventOfCode.Tests
         [Fact]
         public void Part1_BaseValue()
         {
-            Node node = new Node(0, 0, 1);
+            Node node = new Node(0, 0, 1, 0);
             Assert.True(node.BaseValue() == 1);
-            node = new Node(1, 1, 1);
+            node = new Node(1, 1, 1, 0);
             Assert.True(node.BaseValue() == 9);
         }
 
@@ -39,14 +39,14 @@ namespace helloserve.com.AdventOfCode.Tests
         [Fact]
         public void Part1_IsWall()
         {
-            Node node = new Node(0, 0, 1);
-            Assert.False(node.IsOpen());
-            node = new Node(0, 0, 3);
-            Assert.True(node.IsOpen());
-            node = new Node(0, 0, 257);
-            Assert.True(node.IsOpen());
-            node = new Node(0, 0, 259);
-            Assert.False(node.IsOpen());
+            Node node = new Node(0, 0, 1, 0);
+            Assert.False(node.IsOpen);
+            node = new Node(0, 0, 3, 0);
+            Assert.True(node.IsOpen);
+            node = new Node(0, 0, 257, 0);
+            Assert.True(node.IsOpen);
+            node = new Node(0, 0, 259, 0);
+            Assert.False(node.IsOpen);
         }
 
         [Fact]
@@ -54,6 +54,20 @@ namespace helloserve.com.AdventOfCode.Tests
         {
             Verses2016Day13 verses = new Verses2016Day13();
             Assert.True(verses.Part1(1, 1, 10, 7, 4) == 11);
+        }
+
+        [Fact]
+        public void Part1_ProblemArea()
+        {
+            Verses2016Day13 verses = new Verses2016Day13();
+            Assert.True(verses.Part1(23, 16, 1350, 31, 39) == 108);
+        }
+
+        [Fact]
+        public void Part1_Part1()
+        {
+            Verses2016Day13 verses = new Verses2016Day13();
+            Assert.True(verses.Part1(1, 1, 1350, 31, 39) == 108);
         }
     }
 }
