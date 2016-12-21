@@ -57,17 +57,17 @@ namespace helloserve.com.AdventOfCode.Tests
         }
 
         [Fact]
-        public void Part1_ProblemArea()
-        {
-            Verses2016Day13 verses = new Verses2016Day13();
-            Assert.True(verses.Part1(23, 16, 1350, 31, 39) == 108);
-        }
-
-        [Fact]
         public void Part1_Part1()
         {
             Verses2016Day13 verses = new Verses2016Day13();
-            Assert.True(verses.Part1(1, 1, 1350, 31, 39) == 108);
+            Assert.True(verses.Part1(1, 1, 1350, 31, 39) == 92);
+        }
+
+        [Fact]
+        public void Part2_Part2()
+        {
+            Verses2016Day13 verses = new Verses2016Day13();
+            Assert.True(verses.Part2(1, 1, 1350) == 124);
         }
     }
 }

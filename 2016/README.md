@@ -76,4 +76,4 @@ The instructions doesn't mention what the `jnz` command does when `x` is zero. I
 
 ### Day 13
 
-A*. I've never implemented it before. Not even for Stingray. It wasn't easy.
+So, A*. I've never implemented it before, not even for Stingray. And it wasn't easy. The theory of the algorithm isn't too hard, the implementation is another thing though. My biggest problems were with the heuristics, and setting `g(n)` correctly for nodes in the open set. But there was period there were I fell into the _iterate on changes until successful_ pit of frustration. Also, the visualization of it helped a lot, but was also troublesome to do. I do feel however that I now have a solid grasp on the implementation of A*, and that really is the reason why I do things like the Advent of Code.

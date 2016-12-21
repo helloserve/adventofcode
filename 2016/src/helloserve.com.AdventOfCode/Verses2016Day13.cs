@@ -17,6 +17,7 @@ namespace helloserve.com.AdventOfCode
         int _width;
         int _height;
         int _startDestDistance;
+        int? _maxPathLength;
 
         Dictionary<int, Node> _allNodes = new Dictionary<int, Node>();
         List<OpenNode> _openNodes = new List<OpenNode>();
@@ -32,9 +33,9 @@ namespace helloserve.com.AdventOfCode
             };
         }
 
-        public int PositionIndex(int x, int y)
+        public int PositionIndex(int x, int y, int? width = null)
         {
-            return y * _width + x;
+            return y * (width ?? _width) + x;
         }
 
         public Node AddNode(int x, int y)
@@ -89,7 +90,7 @@ namespace helloserve.com.AdventOfCode
             if (neighbour != null)
                 neighbours.Add(neighbour);
 
-            return neighbours.Where(x=>x.IsOpen && x.TotalDistance <= node.TotalDistance).OrderBy(x => x.DistanceTo).FirstOrDefault();
+            return neighbours.Where(x => x.IsOpen && x.TotalDistance <= node.TotalDistance).OrderBy(x => x.DistanceTo).FirstOrDefault();
         }
 
         public int Route(Node startNode)
@@ -101,24 +102,31 @@ namespace helloserve.com.AdventOfCode
 
             while (_currentNode != null)
             {
-                nextNode = InspectNeighbours(_currentNode);
-                DrawBoard();
+                if (_currentNode.X == _destX && _currentNode.Y == _destY)
+                    return _currentPath.Count - 1;
+
+                if (_maxPathLength.HasValue && _currentPath.Count > _maxPathLength.Value)
+                    nextNode = null;
+                else
+                    nextNode = InspectNeighbours(_currentNode);
+
+                //DrawBoard();
 
                 if (nextNode == null)
                 {
-                    _openNodes = _openNodes.OrderBy(x => x.Node.DistanceFrom).ToList();
+                    _openNodes.ForEach(x => x.Node.Steps = x.PathToNode.Count);
+                    _openNodes = _openNodes.OrderBy(x => x.Node.TotalDistance).OrderBy(x => x.Node.DistanceTo).ToList();
                     if (_openNodes.Count > 0)
                     {
                         OpenNode nextOpen = _openNodes[0];
+                        _openNodes.RemoveAt(0);
                         nextOpen.Node.Steps = nextOpen.PathToNode.Count;
                         while (nextOpen != null && nextOpen.Node.Visits > 0 && _openNodes.Count > 0)
                         {
-                            _openNodes.RemoveAt(0);
                             nextOpen = _openNodes.FirstOrDefault();
                             nextOpen.Node.Steps = nextOpen.PathToNode.Count;
-                        }
-                        if (_openNodes.Count > 0)
                             _openNodes.RemoveAt(0);
+                        }
 
                         if (nextOpen != null)
                         {
@@ -129,7 +137,7 @@ namespace helloserve.com.AdventOfCode
                 }
 
                 if (nextNode == null)
-                    return - 1;
+                    return -1;
 
                 _currentPath.Add(nextNode);
                 nextNode.Steps = _currentPath.Count - 1;
@@ -137,50 +145,85 @@ namespace helloserve.com.AdventOfCode
 
                 _currentNode.Visit();
 
-                DrawBoard();
-
-                if (_currentNode.X == _destX && _currentNode.Y == _destY)
-                    return _currentPath.Count - 1;
+                //DrawBoard();
             }
 
             return -1;
         }
 
-        public int Part1(int startX, int startY, int seed, int destX, int destY)
+        public int Part1(int startX, int startY, int seed, int destX, int destY, int? maxPathLength = null, int? width = null, int? height = null)
         {
-            InitializeOutput(".\\output\\13.1.txt");
+            //InitializeOutput(".\\output\\13.1.txt");
 
             _seed = seed;
             _startX = startX;
             _startY = startY;
             _destX = destX;
             _destY = destY;
-            _width = Math.Max(startX, destX) * 2;
-            _height = Math.Max(startY, destY) * 2;
+            _width = Math.Max(width ?? 10, Math.Max(startX, destX) * 2);
+            _height = Math.Max(height ?? 10, Math.Max(startY, destY) * 2);
             _startDestDistance = Node.DistanceBetween(_startX, startY, destX, destY);
+            _maxPathLength = maxPathLength;
+
+            _allNodes = new Dictionary<int, Node>();
+            _openNodes = new List<OpenNode>();
+            _currentPath = new List<Node>();
 
             return Route(Create(_startX, _startY));
         }
 
+        public int Part2(int startX, int startY, int seed)
+        {
+            _seed = seed;
+
+            int maxX = startX + 50;
+            int maxY = startY + 50;
+            int index;
+            int steps = -1;
+            Node node;
+            Dictionary<int, int> paths = new Dictionary<int, int>();
+            for (int x = 0; x <= maxX; x++)
+            {
+                for (int y = 0; y <= maxY; y++)
+                {
+                    node = Create(x, y);
+                    if (!node.IsOpen)
+                        continue;
+
+                    index = PositionIndex(x, y, maxX);
+                    steps = Part1(startX, startY, seed, x, y, maxPathLength: 50, width: 100, height: 100);
+                    if (steps != -1)
+                        paths.Add(index, steps);
+                }
+            }
+
+            return paths.Keys.Count;
+        }
+
         private void DrawBoard()
         {
-            char[,] board = new char[_width + 1, _height + 1];
+            int localWidth = _width * 2;
+            int localHeight = _height * 2;
+            char[,] board = new char[localWidth, localHeight];
             int biggestDist = Node.DistanceBetween(_startX, _startY, _destX, _destY);
 
             board[0, 0] = ' ';
-            for (int i = 0; i < _width; i++)
+            for (int i = 0; i < localWidth - 1; i++)
             {
                 board[i + 1, 0] = i.ToString().ToCharArray().Last();
             }
-            for (int i = 0; i < _height; i++)
+            for (int i = 0; i < localHeight - 1; i++)
             {
                 board[0, i + 1] = i.ToString().ToCharArray().Last();
             }
 
-            for (int y = 0; y < _height; y++)
+            for (int y = 0; y < localHeight - 1; y++)
             {
-                for (int x = 0; x < _width; x++)
+                for (int x = 0; x < localWidth - 1; x++)
                 {
+                    if (x > _width || y > _height)
+                        continue;
+
                     int index = PositionIndex(x, y);
                     if (_allNodes.ContainsKey(index))
                     {
@@ -205,9 +248,9 @@ namespace helloserve.com.AdventOfCode
 
             string boardStr = string.Empty;
 
-            for (int y = 0; y < _height + 1; y++)
+            for (int y = 0; y < localHeight - 1; y++)
             {
-                for (int x = 0; x < _width + 1; x++)
+                for (int x = 0; x < localWidth - 1; x++)
                 {
                     boardStr = $"{boardStr}{board[x, y]}";
                 }
