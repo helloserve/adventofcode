@@ -85,3 +85,7 @@ More MD5, more threading. Was pretty straight forward.
 ### Day 15
 
 An automaton. Simple loop of time, and inspect the situation at each step. Replaced a loop with modulus.
+
+### Day 16
+
+What I learnt from this puzzle was that .NET's strings are **really** slow. After my code based on strings did not finish in a reasonable time, I actually wrote code to produce `long` values from the input and proceeded to bit shift `>>` and invert `~` my way to a result. This worked for all my unit tests and the example of disk size 20, but not for part 1 with size 272. The `long` values simply started wrapping, even switching to `ulong` wasn't enough space either. So I revisted my original `string` code and rewrote it using `char[]` and `Array.Copy`. This completed almost instantly, even for part 2. The particular part of the original `string` code that was slow is the $ notation, for example `result = $"{result}{c}"` where `c` is the next character determined for the checksum. So even I could use the bit shifting code to generate enough data, the checksum code would _still_ have taken too long at these lengths.
