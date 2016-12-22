@@ -30,5 +30,14 @@ namespace helloserve.com.AdventOfCode.Tests
             Verses2016Day15 verses = new Verses2016Day15();
             Assert.True(verses.Part1(ReadTextSource("15.txt")) == 148737);
         }
+
+        [Fact]
+        public void Part2_Part2()
+        {
+            Verses2016Day15 verses = new Verses2016Day15();
+            string input = ReadTextSource("15.txt");
+            input = $"{input}\r\nDisc #7 has 11 positions; at time=0, it is at position 0.";
+            Assert.True(verses.Part1(input) == 2353212);
+        }
     }
 }
