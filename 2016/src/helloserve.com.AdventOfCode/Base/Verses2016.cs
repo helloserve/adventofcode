@@ -11,7 +11,7 @@ namespace helloserve.com.AdventOfCode.Base
     public class Verses2016
     {
         private ConcurrentDictionary<string, object> _fileLocks = new ConcurrentDictionary<string, object>();
-        private readonly char[] _nonWordChars = new char[] { ' ', ',', '.' };
+        private readonly char[] _nonWordChars = new char[] { ' ', ',', '.', ';' };
 
         public string ReadWord(string input, ref int index, string expectedValue = null)
         {
