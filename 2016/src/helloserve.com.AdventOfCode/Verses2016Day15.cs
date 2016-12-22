@@ -56,11 +56,7 @@ namespace helloserve.com.AdventOfCode
         public int PositionAfterT(int time)
         {
             int position = StartPosition + time;
-            while (position >= TotalPositions)
-            {
-                position = position - TotalPositions;
-            }
-            return position;
+            return position % TotalPositions;
         }
     }
 }

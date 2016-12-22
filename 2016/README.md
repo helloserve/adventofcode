@@ -84,4 +84,4 @@ More MD5, more threading. Was pretty straight forward.
 
 ### Day 15
 
-An automaton. Simple loop of time, and inspect the situation at each step. I'm sure there is a mathematical formula to determine the position of a disk at any time without using a while loop tho. Maybe for later investigation.
+An automaton. Simple loop of time, and inspect the situation at each step. Replaced a loop with modulus.
