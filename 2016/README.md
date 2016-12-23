@@ -97,3 +97,7 @@ I did not attempt a recursive implementation this time round (although I suspect
 ### Day 18
 
 Ezpz day.
+
+### Day 19
+
+It immediately struck me that the example shows 5 elves, but the puzzle input > 300 000 elves. After I made a comment about that disparity a friend hinted that I should seek and implement the analytical solution. That wasn't too hard.
