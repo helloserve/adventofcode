@@ -92,4 +92,8 @@ What I learnt from this puzzle was that .NET's strings are **really** slow. Afte
 
 ### Day 17
 
-I did not attempt a recursive implementation this time round (although I suspect it would have been ok on a 4x4 grid). Instead I used for a state loop. For part 2 I just removed the length check for early exit and extended the room position check instead.
+I did not attempt a recursive implementation this time round (although I suspect it would have been ok on a 4x4 grid). For part 2 I just removed the length check for early exit and extended the room position check instead.
+
+### Day 18
+
+Ezpz day.
