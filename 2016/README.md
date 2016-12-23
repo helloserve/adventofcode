@@ -100,5 +100,5 @@ Ezpz day.
 
 ### Day 19
 
-It immediately struck me that the example shows 5 elves, but the puzzle input > 300 000 elves. After I made a comment about that disparity a friend hinted that I should seek and implement the analytical solution. That wasn't too hard. Part 2 though, I culdn't find the solution for that one, so I ran through the story.
+It immediately struck me that the example shows 5 elves, but the puzzle input > 300 000 elves. After I made a comment about that disparity a friend hinted that I should seek and implement the analytical solution. That wasn't too hard. Part 2 though, I couldn't find the solution for that one, so I ran through the story.
 
