@@ -42,5 +42,33 @@ namespace helloserve.com.AdventOfCode
 
             return elves[0];
         }
+
+        public int Part2(int count)
+        {
+            List<int> elves = new List<int>();
+            //initialize
+            for (int i = 0; i < count; i++)
+                elves.Add(i + 1);
+
+            int j = 0;
+            int target;
+            while (elves.Count > 1)
+            {
+                target = j + (elves.Count / 2);
+                if (target >= elves.Count)
+                {
+                    j--;
+                    target -= elves.Count;
+                }
+
+                elves.RemoveAt(target);
+                j++;
+
+                if (j >= elves.Count)
+                    j = 0;
+            }
+
+            return elves[0];
+        }
     }
 }
