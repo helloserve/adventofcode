@@ -89,3 +89,7 @@ An automaton. Simple loop of time, and inspect the situation at each step. Repla
 ### Day 16
 
 What I learnt from this puzzle was that .NET's strings are **really** slow. After my code based on strings did not finish in a reasonable time, I actually wrote code to produce `long` values from the input and proceeded to bit shift `>>` and invert `~` my way to a result. This worked for all my unit tests and the example of disk size 20, but not for part 1 with size 272. The `long` values simply started wrapping, even switching to `ulong` wasn't enough space either. So I revisted my original `string` code and rewrote it using `char[]` and `Array.Copy`. This completed almost instantly, even for part 2. The particular part of the original `string` code that was slow is the $ notation, for example `result = $"{result}{c}"` where `c` is the next character determined for the checksum. So even I could use the bit shifting code to generate enough data, the checksum code would _still_ have taken too long at these lengths.
+
+### Day 17
+
+I did not attempt a recursive implementation this time round (although I suspect it would have been ok on a 4x4 grid). Instead I used for a state loop. For part 2 I just removed the length check for early exit and extended the room position check instead.
