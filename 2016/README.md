@@ -102,3 +102,6 @@ Ezpz day.
 
 It immediately struck me that the example shows 5 elves, but the puzzle input > 300 000 elves. After I made a comment about that disparity a friend hinted that I should seek and implement the analytical solution. That wasn't too hard. Part 2 though, I couldn't find the solution for that one, so I ran through the story.
 
+### Day 20
+
+I struggled more with this one than I'd like to admit. Day 1 was easy enough. Sorting the ranges and looking for the first gap yielded the correct answer. _Retrospectively_ it was also lucky. What I didn't immediately realize was that the range highs are not necessarily sorted correctly based on sorting the range lows (because they overlap), and my solution of summing the difference between the consecutive range lows and highs broke at the last range where the difference to the max number was incorrect. So I reverted to combining overlapping ranges which left me with only 154 to deal with. Job done.
