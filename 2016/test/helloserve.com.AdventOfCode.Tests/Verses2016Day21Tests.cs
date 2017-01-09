@@ -58,7 +58,7 @@ namespace helloserve.com.AdventOfCode.Tests
             blr.AppendLine("move position 3 to position 0");
             blr.AppendLine("rotate based on position of letter b");
             blr.AppendLine("rotate based on position of letter d");
-            input = verses.Process(blr.ToString(), input);
+            input = verses.Part1(blr.ToString(), input);
             Assert.True(input == "decab");
         }
 
@@ -66,7 +66,50 @@ namespace helloserve.com.AdventOfCode.Tests
         public void Part1_Part1()
         {
             Verses2016Day21 verses = new Verses2016Day21();
-            Assert.True(verses.Process(ReadTextSource("21.txt"), "abcdefgh") == "gbhcefad");
+            Assert.True(verses.Part1(ReadTextSource("21.txt"), "abcdefgh") == "gbhcefad");
+        }
+
+        [Fact]
+        public void Part2_Ex()
+        {
+            Verses2016Day21 verses = new Verses2016Day21();
+            string input = "decab";
+            input = verses.RotatePosReverse(input, 'd');
+            Assert.True(input == "ecabd");
+            input = verses.RotatePosReverse(input, 'b');
+            Assert.True(input == "abdec");
+            input = verses.Move(input, 0, 3);
+            Assert.True(input == "bdeac");
+            input = verses.Move(input, 4, 1);
+            Assert.True(input == "bcdea");
+            input = verses.RotateRight(input, 1);
+            Assert.True(input == "abcde");
+            input = verses.Reverse(input, 0, 4);
+            Assert.True(input == "edcba");
+            input = verses.SwapLet(input, 'b', 'd');
+            Assert.True(input == "ebcda");
+            input = verses.SwapPos(input, 4, 0);
+            Assert.True(input == "abcde");
+
+            input = "decab";
+            StringBuilder blr = new StringBuilder();
+            blr.AppendLine("swap position 4 with position 0");
+            blr.AppendLine("swap letter d with letter b");
+            blr.AppendLine("reverse positions 0 through 4");
+            blr.AppendLine("rotate left 1 step");
+            blr.AppendLine("move position 1 to position 4");
+            blr.AppendLine("move position 3 to position 0");
+            blr.AppendLine("rotate based on position of letter b");
+            blr.AppendLine("rotate based on position of letter d");
+            input = verses.Part2(blr.ToString(), input);
+            Assert.True(input == "abcde");
+        }
+
+        [Fact]
+        public void Part2_Part2()
+        {
+            Verses2016Day21 verses = new Verses2016Day21();
+            Assert.True(verses.Part2(ReadTextSource("21.txt"), "fbgdceah") == "gahedfcb");
         }
     }
 }

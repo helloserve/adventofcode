@@ -68,6 +68,19 @@ namespace helloserve.com.AdventOfCode
             return input;
         }
 
+        public string RotatePosReverse(string input, char letter)
+        {
+            string tempInput = string.Empty;
+            string reverseInput = input;
+            while (tempInput != input)
+            {
+                reverseInput = RotateLeft(reverseInput, 1);
+                tempInput = RotatePos(reverseInput, letter);
+            }
+
+            return reverseInput;
+        }
+
         public string Reverse(string input, int index1, int index2)
         {
             int range = index2 - index1;
@@ -80,7 +93,16 @@ namespace helloserve.com.AdventOfCode
             return new string(chars);
         }
 
-        public string Process(string input, string password)
+        public string Move(string input, int posFrom, int posTo)
+        {
+            char c = input[posFrom];
+            List<char> chars = input.ToCharArray().ToList();
+            chars.RemoveAt(posFrom);
+            chars.Insert(posTo, c);
+            return new string(chars.ToArray());
+        }
+
+        public string Part1(string input, string password)
         {
             string[] lines = input.Split(new char[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
             foreach (string line in lines)
@@ -109,6 +131,26 @@ namespace helloserve.com.AdventOfCode
             }
         }
 
+        private string CommandReverse(string line, string input)
+        {
+            int i = 0;
+            string word = ReadWord(line, ref i);
+            switch (word)
+            {
+                case "swap":
+                    return SwapCommandReverse(line, input);
+                case "rotate":
+                    return RotateCommandReverse(line, input);
+                case "reverse":
+                    return ReverseCommand(line, input);
+                case "move":
+                    return MoveCommandReverse(line, input);
+                default:
+                    throw new NotImplementedException(line);
+            }
+        }
+
+
         private string SwapCommand(string line, string input)
         {
             int i = 0;
@@ -130,6 +172,32 @@ namespace helloserve.com.AdventOfCode
                 ReadWord(line, ref i, expectedValue: "letter");
                 char c2 = ReadWord(line, ref i)[0];
                 return SwapLet(input, c1, c2);
+            }
+
+            throw new NotImplementedException(line);
+        }
+
+        private string SwapCommandReverse(string line, string input)
+        {
+            int i = 0;
+            ReadWord(line, ref i, expectedValue: "swap");
+            string word = ReadWord(line, ref i);
+            if (word == "position")
+            {
+                int pos1 = ReadInt(line, ref i);
+                ReadWord(line, ref i, expectedValue: "with");
+                ReadWord(line, ref i, expectedValue: "position");
+                int pos2 = ReadInt(line, ref i);
+                return SwapPos(input, pos2, pos1);
+            }
+
+            if (word == "letter")
+            {
+                char c1 = ReadWord(line, ref i)[0];
+                ReadWord(line, ref i, expectedValue: "with");
+                ReadWord(line, ref i, expectedValue: "letter");
+                char c2 = ReadWord(line, ref i)[0];
+                return SwapLet(input, c2, c1);
             }
 
             throw new NotImplementedException(line);
@@ -161,6 +229,32 @@ namespace helloserve.com.AdventOfCode
             throw new NotImplementedException(line);
         }
 
+        private string RotateCommandReverse(string line, string input)
+        {
+            int i = 0;
+            ReadWord(line, ref i, expectedValue: "rotate");
+            string word = ReadWord(line, ref i);
+            if (word == "left" || word == "right")
+            {
+                int steps = ReadInt(line, ref i);
+                if (word == "left")
+                    return RotateRight(input, steps);
+                if (word == "right")
+                    return RotateLeft(input, steps);
+            }
+            if (word == "based")
+            {
+                ReadWord(line, ref i, expectedValue: "on");
+                ReadWord(line, ref i, expectedValue: "position");
+                ReadWord(line, ref i, expectedValue: "of");
+                ReadWord(line, ref i, expectedValue: "letter");
+                char c = ReadWord(line, ref i)[0];
+                return RotatePosReverse(input, c);
+            }
+
+            throw new NotImplementedException(line);
+        }
+
         private string ReverseCommand(string line, string input)
         {
             int i = 0;
@@ -169,7 +263,7 @@ namespace helloserve.com.AdventOfCode
             int pos1 = ReadInt(line, ref i);
             ReadWord(line, ref i, expectedValue: "through");
             int pos2 = ReadInt(line, ref i);
-            return Reverse(input, pos1, pos2);
+            return Reverse(input, Math.Min(pos1, pos2), Math.Max(pos1, pos2));
         }
 
         private string MoveCommand(string line, string input)
@@ -183,14 +277,26 @@ namespace helloserve.com.AdventOfCode
             int pos2 = ReadInt(line, ref i);
             return Move(input, pos1, pos2);
         }
-
-        public string Move(string input, int posFrom, int posTo)
+        private string MoveCommandReverse(string line, string input)
         {
-            char c = input[posFrom];
-            List<char> chars = input.ToCharArray().ToList();
-            chars.RemoveAt(posFrom);
-            chars.Insert(posTo, c);
-            return new string(chars.ToArray());
+            int i = 0;
+            ReadWord(line, ref i, expectedValue: "move");
+            ReadWord(line, ref i, expectedValue: "position");
+            int pos1 = ReadInt(line, ref i);
+            ReadWord(line, ref i, expectedValue: "to");
+            ReadWord(line, ref i, expectedValue: "position");
+            int pos2 = ReadInt(line, ref i);
+            return Move(input, pos2, pos1);
+        }
+
+        public string Part2(string input, string password)
+        {
+            string[] lines = input.Split(new char[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
+            for (int i = lines.Length - 1; i >= 0; i--)
+            {
+                password = CommandReverse(lines[i], password);
+            }
+            return password;
         }
     }
 }

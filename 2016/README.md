@@ -105,3 +105,7 @@ It immediately struck me that the example shows 5 elves, but the puzzle input > 
 ### Day 20
 
 I struggled more with this one than I'd like to admit. Day 1 was easy enough. Sorting the ranges and looking for the first gap yielded the correct answer. _Retrospectively_ it was also lucky. What I didn't immediately realize was that the range highs are not necessarily sorted correctly based on sorting the range lows (because they overlap), and my solution of summing the difference between the consecutive range lows and highs broke at the last range where the difference to the max number was incorrect. So I reverted to combining overlapping ranges which left me with only 154 to deal with. Job done.
+
+### Day 21
+
+Loads and loads of unit tests for the TDD approuch. Each function was tested individually, and then as part of the examples. The reverse implementations wasn't hard, apart from the "rotate based on position" one. Unfortunately I used a brute force approuch here, rotating left until the normal command yielded the same result. This approuch would fall over given long strings. I believe that there isn't enough information to do it otherwise.
