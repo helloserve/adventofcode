@@ -1,11 +1,12 @@
-﻿using System;
+﻿using helloserve.com.AdventOfCode.Base;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace helloserve.com.AdventOfCode
 {
-    public class Verses2016Day21
+    public class Verses2016Day21 : Verses2016
     {
         public string SwapPos(string input, int pos1, int pos2)
         {
@@ -29,14 +30,14 @@ namespace helloserve.com.AdventOfCode
             return new string(chars);
         }
 
-        public string RotateLeft(string input)
+        public string RotateLeft(string input, int count)
         {
             char[] chars = new char[input.Length];
-            for (int i = 1; i < input.Length; i++)
-            {
-                chars[i - 1] = input[i];
-            }
-            chars[chars.Length - 1] = input[0];
+            for (int i = count; i < input.Length; i++)
+                chars[i - count] = input[i];
+
+            for (int i = 0; i < count; i++)
+                chars[chars.Length - count + i] = input[i];
 
             return new string(chars);
         }
@@ -59,33 +60,17 @@ namespace helloserve.com.AdventOfCode
             while (index < input.Length && input[index] != letter)
                 index++;
 
-            if (index >= 4)
-                index += 2;
-            else
-                index++;
-
+            input = RotateRight(input, 1);
             input = RotateRight(input, index);
+            if (index >= 4)
+                input = RotateRight(input, 1);
 
             return input;
         }
 
-        public string Reverse(string input, char letter1, char letter2)
+        public string Reverse(string input, int index1, int index2)
         {
-            int index1 = -1;
-            int index2 = -1;
-            int range;
-            for (int i = 0; i < input.Length; i++)
-            {
-                if (input[i] == letter1 && index1 < 0)
-                    index1 = i;
-                if (input[i] == letter2 && index2 < 0)
-                    index2 = i;
-
-                if (index1 > 0 && index2 > 0)
-                    break;
-            }
-            range = index2 - index1;
-
+            int range = index2 - index1;
             char[] chars = input.ToCharArray();
             for (int i = 0; i <= range; i++)
             {
@@ -93,6 +78,110 @@ namespace helloserve.com.AdventOfCode
             }
 
             return new string(chars);
+        }
+
+        public string Process(string input, string password)
+        {
+            string[] lines = input.Split(new char[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
+            foreach (string line in lines)
+            {
+                password = Command(line, password);
+            }
+            return password;
+        }
+
+        private string Command(string line, string input)
+        {
+            int i = 0;
+            string word = ReadWord(line, ref i);
+            switch (word)
+            {
+                case "swap":
+                    return SwapCommand(line, input);
+                case "rotate":
+                    return RotateCommand(line, input);
+                case "reverse":
+                    return ReverseCommand(line, input);
+                case "move":
+                    return MoveCommand(line, input);
+                default:
+                    throw new NotImplementedException(line);
+            }
+        }
+
+        private string SwapCommand(string line, string input)
+        {
+            int i = 0;
+            ReadWord(line, ref i, expectedValue: "swap");
+            string word = ReadWord(line, ref i);
+            if (word == "position")
+            {
+                int pos1 = ReadInt(line, ref i);
+                ReadWord(line, ref i, expectedValue: "with");
+                ReadWord(line, ref i, expectedValue: "position");
+                int pos2 = ReadInt(line, ref i);
+                return SwapPos(input, pos1, pos2);
+            }
+
+            if (word == "letter")
+            {
+                char c1 = ReadWord(line, ref i)[0];
+                ReadWord(line, ref i, expectedValue: "with");
+                ReadWord(line, ref i, expectedValue: "letter");
+                char c2 = ReadWord(line, ref i)[0];
+                return SwapLet(input, c1, c2);
+            }
+
+            throw new NotImplementedException(line);
+        }
+
+        private string RotateCommand(string line, string input)
+        {
+            int i = 0;
+            ReadWord(line, ref i, expectedValue: "rotate");
+            string word = ReadWord(line, ref i);
+            if (word == "left" || word == "right")
+            {
+                int steps = ReadInt(line, ref i);
+                if (word == "left")
+                    return RotateLeft(input, steps);
+                if (word == "right")
+                    return RotateRight(input, steps);
+            }
+            if (word == "based")
+            {
+                ReadWord(line, ref i, expectedValue: "on");
+                ReadWord(line, ref i, expectedValue: "position");
+                ReadWord(line, ref i, expectedValue: "of");
+                ReadWord(line, ref i, expectedValue: "letter");
+                char c = ReadWord(line, ref i)[0];
+                return RotatePos(input, c);
+            }
+
+            throw new NotImplementedException(line);
+        }
+
+        private string ReverseCommand(string line, string input)
+        {
+            int i = 0;
+            ReadWord(line, ref i, expectedValue: "reverse");
+            ReadWord(line, ref i, expectedValue: "positions");
+            int pos1 = ReadInt(line, ref i);
+            ReadWord(line, ref i, expectedValue: "through");
+            int pos2 = ReadInt(line, ref i);
+            return Reverse(input, pos1, pos2);
+        }
+
+        private string MoveCommand(string line, string input)
+        {
+            int i = 0;
+            ReadWord(line, ref i, expectedValue: "move");
+            ReadWord(line, ref i, expectedValue: "position");
+            int pos1 = ReadInt(line, ref i);
+            ReadWord(line, ref i, expectedValue: "to");
+            ReadWord(line, ref i, expectedValue: "position");
+            int pos2 = ReadInt(line, ref i);
+            return Move(input, pos1, pos2);
         }
 
         public string Move(string input, int posFrom, int posTo)

@@ -28,7 +28,7 @@ namespace helloserve.com.AdventOfCode.Base
             }
 
             if (!string.IsNullOrEmpty(expectedValue) && expectedValue != result)
-                throw new InvalidOperationException($"{result} did not match {expectedValue}");
+                throw new InvalidOperationException($"'{result}' did not match '{expectedValue}'");
 
 
             return result;
