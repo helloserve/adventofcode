@@ -35,5 +35,12 @@ namespace helloserve.com.AdventOfCode.Tests
             Verses2016Day22 verses = new Verses2016Day22();
             Assert.True(verses.Part1(ReadTextSource("22.txt")) == 934);
         }
+
+        [Fact]
+        public void Part2_Part2()
+        {
+            Verses2016Day22 verses = new Verses2016Day22();
+            Assert.True(verses.Part2(ReadTextSource("22.txt")) == 7);
+        }
     }
 }

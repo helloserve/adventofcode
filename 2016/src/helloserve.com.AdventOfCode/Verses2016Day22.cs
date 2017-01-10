@@ -1,16 +1,20 @@
-﻿using System;
+﻿using helloserve.com.AdventOfCode.Base;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace helloserve.com.AdventOfCode
 {
-    public class Verses2016Day22
+    public class Verses2016Day22 : Verses2016
     {
         ServerNode[] _nodes;
         int _width;
         int _height;
+        int _targetX;
+        int _targetY;
 
         public int Part1(string input)
         {
@@ -28,7 +32,7 @@ namespace helloserve.com.AdventOfCode
                     if (i == j)
                         continue;
 
-                    node1 = _nodes[i];                    
+                    node1 = _nodes[i];
 
                     if (node1.Used == 0)
                         continue;
@@ -41,6 +45,16 @@ namespace helloserve.com.AdventOfCode
             }
 
             return viablePairs;
+        }
+
+        public int Part2(string input)
+        {
+            InitializeOutput(@".\output\22.txt");
+            Setup(input);
+            _targetX = _width - 1;
+            _targetY = 0;
+            LogGrid();
+            return 0;
         }
 
         private void Setup(string input)
@@ -78,6 +92,34 @@ namespace helloserve.com.AdventOfCode
         private int GetIndex(int x, int y)
         {
             return y * _height + x;
+        }
+
+        private void LogGrid()
+        {
+            StringBuilder blr = new StringBuilder();
+            ServerNode node;
+            for (int y = 0; y < _height; y++)
+            {
+                for (int x = 0; x < _width; x++)
+                {
+                    if (x == 0 && y == 0)
+                        blr.Append("*");
+                    else
+                    {
+                        node = _nodes[GetIndex(x, y)];
+
+                        if (node.Used == 0)
+                            blr.Append("_");
+                        else if (node.X == _targetX && node.Y == _targetY)
+                            blr.Append("G");
+                        else
+                            blr.Append(".");
+                    }
+                }
+                blr.Append("\r\n");
+            }
+
+            LogOutput(@".\output\22.txt", blr.ToString());
         }
     }
 
