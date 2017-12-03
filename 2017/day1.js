@@ -2,14 +2,9 @@ var File = require('./file.js');
 
 function Day1() {
 
-    this.part1File = function(filepath, callback) {
-        var file = new File();
-        return file.load(filepath, (data) => {
-            return callback(this.part1(data));
-        });
-    }
+    this.part1File = (filepath, callback) => new File().load(filepath, data => callback(this.part1(data)));
 
-    this.part1 = function(input) {
+    this.part1 = (input) => {
         var i = 0;
         var sum = 0;
         while (i < input.length - 1) {
@@ -26,21 +21,14 @@ function Day1() {
         return sum;
     }
 
-    this.part2File = function(filepath, callback) {
-        var file = new File();
-        return file.load(filepath, (data) => {
-            return callback(this.part2(data));
-        });
-    }
+    this.part2File = (filepath, callback) => new File().load(filepath, data => callback(this.part2(data)));
 
-    this.part2 = function(input) {
+    this.part2 = (input) => {
         var i = 0;
         var sum = 0;
         var offset = input.length / 2;
-        //console.log('offset=' + offset);
         while (i < input.length) {
             var j = offset + i;
-            //console.log('i=' + i + ' j=' + j);
             if (j >= input.length) {
                 j = j - input.length;
             }
