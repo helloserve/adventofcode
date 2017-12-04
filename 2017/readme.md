@@ -8,4 +8,4 @@ To run all tests, run
 > mocha tests --recursive
 ```
 
-Replace `tests` with the required pattern to test only a particular day.
+~Replace `tests` with the required pattern to test only a particular day~ <- this doesn't seem to work, actually.

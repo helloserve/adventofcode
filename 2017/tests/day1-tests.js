@@ -66,11 +66,11 @@ describe('Day 1', function() {
         expect(result).to.equal(4);
     });
 
-    it('Part 2', function() { 
+    it('Part 2', function(done) { 
         var day1 = new Day1();
         var result = day1.part2File(path.resolve(__dirname, '../day1.txt'), (data) => {
             console.log("DAY1 result", data);
-            expect(data).to.equals(1238);
+            expect(data).to.equals(1238).satisfy(done());
         });
     });
 
