@@ -1,5 +1,5 @@
 part1 = (input) => {
-    var lines = input.split('\r\n');
+    var lines = input.split(/[\r\n]+/g);
     var total = 0;
     
     lines.forEach((line, index) => {
@@ -10,7 +10,7 @@ part1 = (input) => {
 }
 
 part2 = (input) => {
-    var lines = input.split('\r\n');
+    var lines = input.split(/[\r\n]+/g);
     var total = 0;
     
     lines.forEach((line, index) => {

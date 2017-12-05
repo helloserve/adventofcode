@@ -1,7 +1,7 @@
 part1 = (input) => {
     var index = 0;
     var steps = 0;
-    var jumps = input.split('\r\n')
+    var jumps = input.split(/[\r\n]+/g)
     while (index >= 0 && index < jumps.length) {
         var i = index;
         index += parseInt(jumps[index]);
@@ -15,17 +15,12 @@ part1 = (input) => {
 part2 = (input) => {
     var index = 0;
     var steps = 0;
-    var jumps = input.split('\r\n')
+    var jumps = input.split(/[\r\n]+/g)
     while (index >= 0 && index < jumps.length) {
         var i = index;
         index += parseInt(jumps[index]);
         var jump = parseInt(jumps[i]);
-        if (jump >= 3) {
-            jumps[i] = jump - 1;
-        }
-        else {
-            jumps[i] = jump + 1;
-        }
+        jumps[i] = jump >= 3 ? jump - 1 : jump + 1;
         steps++;
     }
 
@@ -34,3 +29,6 @@ part2 = (input) => {
 
     
 module.exports =  { part1, part2 }
+
+
+console.log(part1('0\r\n3\r\n0\r\n1\r\n-3'));
