@@ -1,50 +1,29 @@
 require('./string.js');
 
-part1 = (input) => {
-    var lines = splitOnNewLine(input);
-    var total = 0;
-    
-    lines.forEach((line, index) => {
-        total += parseLine(line) ? 1 : 0;
-    });
-    console.log(total);
-    return total;
-}
+part1 = (input) => splitOnNewLine(input).reduce((accumulator, currentLine, currentIndex, array) => 
+    parseLine(currentLine) ? accumulator + 1 : accumulator, 0);
 
-part2 = (input) => {
-    var lines = splitOnNewLine(input);
-    var total = 0;
-    
-    lines.forEach((line, index) => {
-        total += parseLine(line, true) ? 1 : 0;
-    });
-    console.log(total);
-    return total;        
-}
+part2 = (input) => splitOnNewLine(input).reduce((accumulator, currentLine, currentIndex, array) =>
+    parseLine(currentLine, true) ? accumulator + 1 : accumulator, 0);
 
 parseLine = (line, checkAnagram) => {
-    var words = splitOnWhiteSpace(line);
-    for (let i = 0; i < words.length; i++) {
-        const word_i = words[i];
-        
-        for (let j = 0; j < words.length; j++) {
-            const word_j = words[j];
-            
-            if (i == j) {
-                continue;
+    return splitOnWhiteSpace(line).reduce((outerResult, outerWord, outerIndex, outerArray) => {
+        return outerResult && outerArray.reduce((innerResult, innerWord, innerIndex, innerArray) => {
+            if (outerIndex === innerIndex) {
+                return innerResult && true;
             }
 
-            if (word_i === word_j) {
+            if (outerWord === innerWord) {
                 return false;
             }
 
-            if (checkAnagram && isAnagram(word_i, word_j)) {
+            if (checkAnagram && isAnagram(outerWord, innerWord)) {
                 return false;
             }
-        }
-    }
 
-    return true;
+            return innerResult && true;
+        }, true);
+    }, true);
 }
 
 isAnagram = (a, b) => {
@@ -70,3 +49,5 @@ isAnagram = (a, b) => {
 }
     
 module.exports =  { part1, part2 }
+
+part2('iiii oiii ooii oooi oooo');
