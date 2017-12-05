@@ -26,30 +26,28 @@ part2 = (input) =>
             return accumulator;
         }
 
-        return accumulator + 
-            currentLine.split(/\s/).reduce((value, currentElement, elementIndex, elementArray) => {                
-                for (let i = 0; i < elementArray.length; i++) {
-                    const element_i = parseInt(elementArray[i]);
-                    
-                    for (let j = 0; j < elementArray.length; j++) {
-                        if (i === j) {
-                            continue;
+        return accumulator +
+            currentLine.split(/\s/).reduce((outerAccumulator, outerElement, outerIndex, outerArray) => {                
+                
+                var element_outer = parseInt(outerElement);    
+                
+                return outerAccumulator + 
+                    outerArray.reduce((innerAccumulator, innerElement, innerIndex, innerArray) => {
+                        if (outerIndex === innerIndex) {
+                            return innerAccumulator;
                         }
         
-                        const element_j = parseInt(elementArray[j]);
+                        const element_inner = parseInt(innerElement);
                         
-                        if (element_j > element_i || element_i % element_j !== 0) {
-                            continue;
+                        if (element_inner > element_outer || element_outer % element_inner !== 0) {
+                            return innerAccumulator;
                         }
         
-                        return element_i / element_j;
-                    }
-                }
-
-                return 0;
+                        return innerAccumulator + (element_outer / element_inner);
+                    }, 0);
             }, 0);
     }, 0);
 
 module.exports = { part1, part2 };
 
-console.log(part1('5 1 9 5\r\n7 5 3\r\n2 4 6 8\r\n'));
+console.log(part2('5 9 2 8\r\n9 4 7 3\r\n3 8 6 5\r\n'));
