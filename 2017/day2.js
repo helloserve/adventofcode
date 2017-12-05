@@ -1,5 +1,7 @@
+require('./string.js');
+
 part1 = (input) =>
-    input.split(/[\r\n]+/g).reduce((accumulator, currentLine, lineIndex, array) => {
+    splitOnNewLine(input).reduce((accumulator, currentLine, lineIndex, array) => {
         if (currentLine.length == 0) {
             return accumulator;
         }
@@ -9,7 +11,7 @@ part1 = (input) =>
             max : Number.MIN_SAFE_INTEGER,
         };
 
-        lineValues = currentLine.split(/\s/).reduce(({ max, min }, currentElement, elementIndex, elementArray) => {
+        lineValues = splitOnWhiteSpace(currentLine).reduce(({ max, min }, currentElement, elementIndex, elementArray) => {
             var element = parseInt(currentElement);
             return {
                 min: element < min ? element : min,
@@ -21,13 +23,13 @@ part1 = (input) =>
     }, 0);
 
 part2 = (input) => 
-    input.split(/[\r\n]+/g).reduce((accumulator, currentLine, lineIndex, lineArray) => {
+    splitOnNewLine(input).reduce((accumulator, currentLine, lineIndex, lineArray) => {
         if (currentLine.length === 0) {
             return accumulator;
         }
 
         return accumulator +
-            currentLine.split(/\s/).reduce((outerAccumulator, outerElement, outerIndex, outerArray) => {                
+            splitOnWhiteSpace(currentLine).reduce((outerAccumulator, outerElement, outerIndex, outerArray) => {                
                 
                 var element_outer = parseInt(outerElement);    
                 
