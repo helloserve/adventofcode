@@ -1,5 +1,7 @@
+require('./string.js');
+
 part1 = (input) => {
-    var lines = input.split(/[\r\n]+/g);
+    var lines = splitOnNewLine(input);
     var total = 0;
     
     lines.forEach((line, index) => {
@@ -10,7 +12,7 @@ part1 = (input) => {
 }
 
 part2 = (input) => {
-    var lines = input.split(/[\r\n]+/g);
+    var lines = splitOnNewLine(input);
     var total = 0;
     
     lines.forEach((line, index) => {
@@ -21,7 +23,7 @@ part2 = (input) => {
 }
 
 parseLine = (line, checkAnagram) => {
-    var words = line.split(/\s/);        
+    var words = splitOnWhiteSpace(line);
     for (let i = 0; i < words.length; i++) {
         const word_i = words[i];
         

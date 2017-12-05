@@ -1,7 +1,9 @@
+require('./string.js');
+
 part1 = (input) => {
     var index = 0;
     var steps = 0;
-    var jumps = input.split(/[\r\n]+/g)
+    var jumps = splitOnNewLine(input);
     while (index >= 0 && index < jumps.length) {
         var i = index;
         index += parseInt(jumps[index]);
@@ -15,7 +17,7 @@ part1 = (input) => {
 part2 = (input) => {
     var index = 0;
     var steps = 0;
-    var jumps = input.split(/[\r\n]+/g)
+    var jumps = splitOnNewLine(input);
     while (index >= 0 && index < jumps.length) {
         var i = index;
         index += parseInt(jumps[index]);
