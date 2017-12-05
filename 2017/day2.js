@@ -1,5 +1,5 @@
 part1 = (input) =>
-    input.split('\r\n').reduce((accumulator, currentLine, lineIndex, array) => {
+    input.split(/[\r\n]+/g).reduce((accumulator, currentLine, lineIndex, array) => {
         if (currentLine.length == 0) {
             return accumulator;
         }
@@ -24,7 +24,7 @@ part1 = (input) =>
     }, 0);
 
 part2 = (input) => 
-    input.split('\r\n').reduce((accumulator, currentLine, lineIndex, lineArray) => {
+    input.split(/[\r\n]+/g).reduce((accumulator, currentLine, lineIndex, lineArray) => {
         if (currentLine.length === 0) {
             return accumulator;
         }
