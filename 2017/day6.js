@@ -40,6 +40,7 @@ redistributeUntilSeen = (blocks) => {
 }
 
 redistribute = (blocks) => {
+    var bankCount = blocks.length;
     var blockAmount = 0;
     var blockIndex = 0;
     for (let index = 0; index < blocks.length; index++) {
@@ -53,11 +54,7 @@ redistribute = (blocks) => {
     blocks[blockIndex] = 0;
     var index = blockIndex + 1;
     while (blockAmount > 0) {
-        if (index > blocks.length -1) {
-            index = 0;
-        }
-
-        blocks[index] = parseInt(blocks[index]) + 1;
+        blocks[index % bankCount] = parseInt(blocks[index % bankCount]) + 1;
         blockAmount--;
         index++;
     }
