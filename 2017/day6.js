@@ -2,27 +2,17 @@ require('./string.js');
 
 part1 = (input) => {
     var blocks = splitOnWhiteSpace(input);
-    return redistributeUntilSeen(blocks);
+    return redistributeUntilRepeat(blocks).length;
 }
 
 part2 = (input) => {
     var blocks = splitOnWhiteSpace(input);
-    redistributeUntilSeen(blocks);
+    var patterns = redistributeUntilRepeat(blocks);
 
-    var redistCycles = 0;
-    var initialPattern = blocks.reduce((accumulator, count, index, array) => accumulator + count + ",", "");
-    var redistPattern = '';
-    while (redistPattern !== initialPattern) {
-        blocks = redistribute(blocks);
-
-        redistPattern = blocks.reduce((accumulator, count, index, array) => accumulator + count + ",", "");
-        redistCycles++;
-    }
-
-    return redistCycles;    
+    return patterns.length - patterns.indexOf(patterns[patterns.length - 1]) - 1;
 }
 
-redistributeUntilSeen = (blocks) => {
+redistributeUntilRepeat = (blocks) => {
     var seenRedist = [];
     var redistCycles = 0;
     var seen = false;
@@ -35,8 +25,8 @@ redistributeUntilSeen = (blocks) => {
         seenRedist.push(redistPattern);
         redistCycles++;
     }
-
-    return redistCycles;
+    
+    return seenRedist;
 }
 
 redistribute = (blocks) => {
