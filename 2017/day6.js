@@ -1,34 +1,14 @@
 require('./string.js');
 
 part1 = (input) => {
-    var seenRedist = [];
-    var redistCycles = 0;
-    var seen = false;
     var blocks = splitOnWhiteSpace(input);
-    while (!seen) {        
-        blocks = redistribute(blocks);
-
-        var redistPattern = blocks.reduce((accumulator, count, index, array) => accumulator + count + ",", "");
-        var seen = seenRedist.reduce((value, pattern, index, array) => value || (pattern === redistPattern) ? true : false, false);
-        seenRedist.push(redistPattern);
-        redistCycles++;
-    }
-
-    return redistCycles;
+    return redistributeUntilSeen(blocks);
 }
 
 part2 = (input) => {
-    var seenRedist = [];
-    var seen = false;
     var blocks = splitOnWhiteSpace(input);
-    while (!seen) {        
-        blocks = redistribute(blocks);
+    redistributeUntilSeen(blocks);
 
-        var redistPattern = blocks.reduce((accumulator, count, index, array) => accumulator + count + ",", "");
-        var seen = seenRedist.reduce((value, pattern, index, array) => value || (pattern === redistPattern) ? true : false, false);
-        seenRedist.push(redistPattern);
-    }
-    
     var redistCycles = 0;
     var initialPattern = blocks.reduce((accumulator, count, index, array) => accumulator + count + ",", "");
     var redistPattern = '';
@@ -40,6 +20,23 @@ part2 = (input) => {
     }
 
     return redistCycles;    
+}
+
+redistributeUntilSeen = (blocks) => {
+    var seenRedist = [];
+    var redistCycles = 0;
+    var seen = false;
+    
+    while (!seen) {        
+        blocks = redistribute(blocks);
+
+        var redistPattern = blocks.reduce((accumulator, count, index, array) => accumulator + count + ",", "");
+        var seen = seenRedist.reduce((value, pattern, index, array) => value || (pattern === redistPattern) ? true : false, false);
+        seenRedist.push(redistPattern);
+        redistCycles++;
+    }
+
+    return redistCycles;
 }
 
 redistribute = (blocks) => {
@@ -70,4 +67,4 @@ redistribute = (blocks) => {
     
 module.exports =  { part1, part2 }
 
-console.log(part2('2 4 1 2'));
+console.log(part2('0 2 7 0'));
