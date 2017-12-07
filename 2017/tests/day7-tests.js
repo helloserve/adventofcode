@@ -15,7 +15,7 @@ describe('Day 7', () => {
         file.load(path.resolve(__dirname, '../day7.txt'), (data) => {
             var result = day7.part1(data);
             console.log("DAY7 result", result);
-            expect(result).to.equals('xxxx').satisfy(done());
+            expect(result).to.equals('aapssr').satisfy(done());
         });
     });
 
