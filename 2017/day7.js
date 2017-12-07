@@ -2,51 +2,38 @@ require('./string.js');
 var file = require('./file.js');
 var path = require('path');
 
-part1 = (input) => {
-    var tree = buildTree(input);
-    //dumpTree(tree);
-    return tree.name;
+const part1 = (input) => {
+    return findRootName(splitInput(input));
 }
 
-// const part1Compose = compose(
-//     (value) => buildTree(value),
-//     (value) => findRoot(value)
-// );
+const splitInput = (input) => splitOnNewLine(input).reduce((accumulator, currentValue, currentIndex, array) => {
+    var parts = currentValue.split('->');
+    var part1Match = parts[0].match(/(\D*)\s\((\d*)\)/);
+    var part2Match = (parts.length > 1) ? parts[1].match(/([a-z]+)/g).splice(0, 999999) : [];
 
+    return [...accumulator, { 
+        name: part1Match[1],
+        weight: parseInt(part1Match[2]),
+        children: part2Match
+    }];
+}, []);
 
-buildTree = (input) => {
-    var inputArray = splitOnNewLine(input).reduce((accumulator, currentValue, currentIndex, array) => {
-        var parts = currentValue.split('->');
-        var part1Match = parts[0].match(/(\D*)\s\((\d*)\)/);
-        var part2Match = (parts.length > 1) ? parts[1].match(/([a-z]+)/g).splice(0, 999999) : [];
+const findRootName = (inputMap) => inputMap.reduce((accumulator, currentValue, currentIndex, array) =>
+    accumulator += array.findIndex((element) => element.children.indexOf(currentValue.name) >= 0) >= 0 ? '' : currentValue.name, '');
 
-        return [...accumulator, { 
-            parent: null,
-            name: part1Match[1],
-            weight: parseInt(part1Match[2]),
-            children: part2Match
-        }];
-    }, []);
-
-    for (let i = 0; i < inputArray.length; i++) {
-        const element_i = inputArray[i];
-        
-        for (let j = 0; j < inputArray.length; j++) {
-            const element_j = inputArray[j];
-            
-            var childIndex = element_j.children.indexOf(element_i.name);
-            if (childIndex > -1) {
-                element_j.children[childIndex] = element_i;
-                element_i.parent = element_j;
-                break;
-            }
-        }
-    }
-
-    return findRoot(inputArray[0]);
+const makeNode = (inputMap, name, parent) => {
+    var element = inputMap.find((element) => element.name === name);
+    return {
+        parent: parent,
+        name: element.name,
+        weight: element.weight,
+        children: element.children.map((childName) => makeNode(inputMap, childName, this))
+    };
 }
 
-findRoot = (node) => {
+const buildTree = (inputMap, rootName) => makeNode(inputMap, rootName, null);
+
+const findRoot = (node) => {
     if (node.parent === null){ 
         return node;
     }
@@ -54,9 +41,9 @@ findRoot = (node) => {
     return findRoot(node.parent);
 }
 
-calcWeight = (node) => node.weight + node.children.reduce((accumulator, currentNode, currentIndex, array) => accumulator + calcWeight(currentNode), 0);
+const calcWeight = (node) => node.weight + node.children.reduce((accumulator, currentNode, currentIndex, array) => accumulator + calcWeight(currentNode), 0);
 
-findWeightAdjustment = (node) => {
+const findWeightAdjustment = (node) => {
     for (let index = 0; index < node.children.length; index++) {
         const element = node.children[index];
         var adjusted = findWeightAdjustment(element);
@@ -87,12 +74,12 @@ findWeightAdjustment = (node) => {
     return 0;
 }
 
-calcNewWeight = (node, target) => {
+const calcNewWeight = (node, target) => {
     var total = calcWeight(node);
     return node.weight + (target - total);
 }
 
-dumpTree = (node, indent) => {
+const dumpTree = (node, indent) => {
     if (indent === undefined) {
         indent = 0;
     }
@@ -112,8 +99,10 @@ dumpTree = (node, indent) => {
     }
 }
 
-part2 = (input) => {
-    var tree = buildTree(input);
+const part2 = (input) => {
+    var inputMap = splitInput(input);
+    var tree = buildTree(inputMap, findRootName(inputMap));
+    //dumpTree(tree);
     return findWeightAdjustment(tree);
 }
     
@@ -123,7 +112,7 @@ module.exports =  { part1, part2 }
 // console.log("-->" + part2(s));
 
 file.load(path.resolve(__dirname, './day7.txt'), (data) => {
-    var result = part1(data);
+    var result = part2(data);
     console.log("DAY7 result", result);
 });
 
