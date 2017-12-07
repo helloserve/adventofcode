@@ -4,7 +4,7 @@ var path = require('path');
 
 part1 = (input) => {
     var tree = buildTree(input);
-    //dumpTree(root);
+    //dumpTree(tree);
     return tree.name;
 }
 
@@ -20,14 +20,13 @@ buildTree = (input) => {
         var part1Match = parts[0].match(/(\D*)\s\((\d*)\)/);
         var part2Match = (parts.length > 1) ? parts[1].match(/([a-z]+)/g).splice(0, 999999) : [];
 
-        accumulator.push({ 
+        return [...accumulator, { 
             parent: null,
             name: part1Match[1],
             weight: parseInt(part1Match[2]),
             children: part2Match
-        });
-        return accumulator;
-    }, []);    
+        }];
+    }, []);
 
     for (let i = 0; i < inputArray.length; i++) {
         const element_i = inputArray[i];
@@ -124,7 +123,7 @@ module.exports =  { part1, part2 }
 // console.log("-->" + part2(s));
 
 file.load(path.resolve(__dirname, './day7.txt'), (data) => {
-    var result = part2(data);
+    var result = part1(data);
     console.log("DAY7 result", result);
 });
 
