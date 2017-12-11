@@ -19,10 +19,10 @@ describe('Day 10', () => {
         expect(result).to.equals(1935).satisfy(done());
     });
 
-    it('Part 2 Empty string', () => {
-        var result = day10.part2('');
-        expect(result).to.equals('a2582a3a0e66e6e86e3812dcb672a272');
-    });
+    // it('Part 2 Empty string', () => {
+    //     var result = day10.part2('');
+    //     expect(result).to.equals('a2582a3a0e66e6e86e3812dcb672a272');
+    // });
     // it('Part 2', function(done) { 
     //     file.load(path.resolve(__dirname, '../day10.txt'), (data) => {
     //         var result = day10.part2(data);
