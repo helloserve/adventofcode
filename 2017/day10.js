@@ -12,31 +12,28 @@ const initialHash = () => {
 
 const calcHash = (hash, lengths, position, skip) => {
     var hashLength = hash.length;
-    for (let i = 0; i < lengths.length; i++) {        
+    for (let i = 0; i < lengths.length; i++) {
         const length = parseInt(lengths[i]);
-        if (length > hashLength)
-            continue;
 
         if (length > 1) {
-            if (position + length > hashLength) {
-                var part = hash.slice(position, hashLength)
-                    .concat(hash.slice(0, position + length - hashLength))
-                    .reverse();
-                
-                var partStart = part.slice(0,  hashLength - position);
-                var partEnd = part.slice(hashLength - position);
-                var partRemainder = hash.slice(position + length - hashLength, position);
-                hash = partEnd.concat(partRemainder).concat(partStart);
+            if (position + length < hashLength) {
+                var part = hash.splice(position, length).reverse();
+                hash.splice(position, 0, ...part);
             }
             else {
-                var part = hash.slice(position, position + length).reverse();
-                hash = hash.slice(0, position).concat(part).concat(hash.slice(position + length));
+                var part = hash.splice(position)
+                    .concat(hash.splice(0, position + length - hashLength))
+                    .reverse();
+
+                var partStart = part.splice(0,  hashLength - position);
+                var partEnd = part;
+                hash = [...partEnd, ...hash, ...partStart];
             }
         }
 
         position += length + skip;
         if (position > hashLength) {
-            position -= hashLength;
+            position %= hashLength;
         }
         skip++;
     }
@@ -52,12 +49,13 @@ const calcDenseHash = (sparseHash) => {
     var denseHash = [];
     for (let j = 0; j < 16; j++) {
         var denseSet = sparseHash.splice(0, 16);
-        var setStart = denseSet[0];
-        denseHash = [...denseHash, denseSet.splice(1).reduce((accumulator, item, index, array) => 
-                accumulator ^ item, setStart)];
+        denseHash = [...denseHash, xorSet(denseSet)];
     }
     return denseHash;
 }
+
+const xorSet = (set) =>set.slice(1).reduce((accumulator, item, index, array) =>
+    accumulator ^ item, set[0]);
 
 const toBytes = (input) => input.split('').reduce((accumulator, item, index, array) => 
     [...accumulator, item.charCodeAt(0)], []);
@@ -85,6 +83,7 @@ const part2 = (input) => {
     return toHex(denseHash);
 }
     
-module.exports =  { toHex, part1, part2 }
+module.exports =  { toBytes, xorSet, toHex, part1, part2 }
 
+//console.log(part2('1,2,3'));
 console.log(part2('14,58,0,116,179,16,1,104,2,254,167,86,255,55,122,244'));
