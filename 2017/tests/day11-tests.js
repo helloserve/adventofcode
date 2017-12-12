@@ -28,7 +28,7 @@ describe('Day 11', () => {
     it('Part 1', function(done) { 
         file.load(path.resolve(__dirname, '../day11.txt'), (data) => {
             var result = day11.part1(data);
-            console.log("day11 result", result);
+            console.log("Day11 result", result);
             expect(result).to.equals(743).satisfy(done());
         });
     });
@@ -36,7 +36,7 @@ describe('Day 11', () => {
     it('Part 2', function(done) { 
         file.load(path.resolve(__dirname, '../day11.txt'), (data) => {
             var result = day11.part2(data);
-            console.log("day11 result", result);
+            console.log("Day11 result", result);
             expect(result).to.equals(1493).satisfy(done());
         });
     });
