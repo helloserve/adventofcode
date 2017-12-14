@@ -51,13 +51,39 @@ const part1 = (input) => {
 }
 
 const part2 = (input) => {
+    var packet = -1;
+    var severity = -1;
+    var seconds = 0;
+    var delay = 0;
+    while (severity != 0) {
+        seconds = 0;
+        var firewall = buildFirewall(input);
+        while (seconds < delay) {
+            processStep(firewall);
+            seconds++;
+        }
+
+        packet = 0;
+        severity = 0;
+
+        while (packet < firewall.length && severity == 0) {
+            severity += step(firewall, packet);
+            processStep(firewall);
+            packet++;
+        }
+
+        console.log("delay: " + delay + ", severity: " + severity);
+        delay++;
+    }
+
+    return seconds;
 }
-    
+   
 module.exports =  { part1, part2 }
 
-//console.log(part1('0: 3\r\n1: 2\r\n4: 4\r\n6: 4'));
+console.log(part2('0: 3\r\n1: 2\r\n4: 4\r\n6: 4'));
 
-file.load(path.resolve(__dirname, './day13.txt'), (data) => {
-    var result = part1(data);
-    console.log("Day 13 result", result);
-});
+// file.load(path.resolve(__dirname, './day13.txt'), (data) => {
+//     var result = part2(data);
+//     console.log("Day 13 result", result);
+// });
