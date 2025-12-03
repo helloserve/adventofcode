@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8' />
+<title>helloserve.com.AdventOfCode.Day01-20251203-170301</title>
+
+<style type="text/css">
+	table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
+	td, th { padding: 6px 13px; border: 1px solid #ddd; text-align: right; }
+	tr { background-color: #fff; border-top: 1px solid #ccc; }
+	tr:nth-child(even) { background: #f8f8f8; }
+</style>
+</head>
+<body>
+<pre><code>
+BenchmarkDotNet v0.15.8, Windows 11 (10.0.26100.7171/24H2/2024Update/HudsonValley)
+AMD Ryzen 9 4900HS with Radeon Graphics 3.00GHz, 1 CPU, 16 logical and 8 physical cores
+.NET SDK 9.0.307
+  [Host]   : .NET 8.0.22 (8.0.22, 8.0.2225.52707), X64 RyuJIT x86-64-v3
+  .NET 8.0 : .NET 8.0.22 (8.0.22, 8.0.2225.52707), X64 RyuJIT x86-64-v3
+</code></pre>
+<pre><code>Job=.NET 8.0  Runtime=.NET 8.0  
+</code></pre>
+
+<table>
+<thead><tr><th>Method</th><th>Mean</th><th>Error</th><th>StdDev</th><th>Gen0</th><th>Gen1</th><th>Allocated</th>
+</tr>
+</thead><tbody><tr><td>Part1</td><td>365.6 &mu;s</td><td>2.75 &mu;s</td><td>2.30 &mu;s</td><td>195.3125</td><td>43.4570</td><td>503.77 KB</td>
+</tr><tr><td>Part2</td><td>379.0 &mu;s</td><td>3.98 &mu;s</td><td>3.33 &mu;s</td><td>195.3125</td><td>43.4570</td><td>503.77 KB</td>
+</tr></tbody></table>
+</body>
+</html>

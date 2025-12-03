@@ -8,7 +8,8 @@ public sealed class Day01
 	public void Part1(string filename, string expected)
 	{
 		AdventOfCode.Day01 day01 = new();
-		var result = day01.Part1(filename);
+		day01.Filename = filename;
+		var result = day01.Part1();
 		Assert.AreEqual(expected, result);
 	}
 
@@ -17,7 +18,8 @@ public sealed class Day01
 	public void Part2(string filename, string expected)
 	{
 		AdventOfCode.Day01 day01 = new();
-		var result = day01.Part2(filename);
+		day01.Filename = filename;
+		var result = day01.Part2();
 		Assert.AreEqual(expected, result);
 	}
 

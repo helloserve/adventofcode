@@ -1,6 +1,14 @@
-﻿namespace helloserve.com.AdventOfCode;
+﻿using BenchmarkDotNet.Attributes;
+using BenchmarkDotNet.Jobs;
+
+namespace helloserve.com.AdventOfCode;
+
+[SimpleJob(RuntimeMoniker.Net80)]
+[MemoryDiagnoser]
 public class Day01 : Base
 {
+	public override string Filename { get; set; } = "Day01.txt";
+
 	private int ParseLine(string line)
 	{
 		var directionPart = line.Substring(0, 1);
@@ -14,9 +22,10 @@ public class Day01 : Base
 		};
 	}
 
-	public override string Part1(string filename)
+	[Benchmark, BenchmarkCategory("Day 01")]
+	public override string Part1()
 	{
-		var input = ReadInput(filename, ParseLine);
+		var input = ReadMultiLineInput(Filename, ParseLine);
 
 		int position = 50;
 		int zeroStops = 0;
@@ -40,9 +49,10 @@ public class Day01 : Base
 		return zeroStops.ToString();
 	}
 
-	public override string Part2(string filename)
+	[Benchmark, BenchmarkCategory("Day 01")]
+	public override string Part2()
 	{
-		var input = ReadInput(filename, ParseLine);
+		var input = ReadMultiLineInput(Filename, ParseLine);
 
 		int position = 50;
 		int zeroStops = 0;
