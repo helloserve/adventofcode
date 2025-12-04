@@ -26,10 +26,18 @@ Console.WriteLine($"Day 03, Part 1: {result}");
 result = day03.Part2();
 Console.WriteLine($"Day 03, Part 2: {result}");
 
+Day04 day04 = new();
+result = day04.Part1();
+Console.WriteLine($"Day 04, Part 1: {result}");
+
+result = day04.Part2();
+Console.WriteLine($"Day 04, Part 2: {result}");
+
 #else
 
-BenchmarkRunner.Run<Day01>();
-BenchmarkRunner.Run<Day02>();
-BenchmarkRunner.Run<Day03>();
+BenchmarkDotNet.Running.BenchmarkRunner.Run<Day01>();
+BenchmarkDotNet.Running.BenchmarkRunner.Run<Day02>();
+BenchmarkDotNet.Running.BenchmarkRunner.Run<Day03>();
+BenchmarkDotNet.Running.BenchmarkRunner.Run<Day04>();
 
 #endif

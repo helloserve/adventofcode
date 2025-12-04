@@ -17,3 +17,6 @@ obj*
 *.user
 packages
 .vs/
+
+# AoC input
+*.txt
