@@ -4,6 +4,7 @@ using BenchmarkDotNet.Jobs;
 namespace helloserve.com.AdventOfCode;
 
 [SimpleJob(RuntimeMoniker.Net80)]
+[SimpleJob(RuntimeMoniker.Net10_0)]
 [MemoryDiagnoser]
 public class Day01 : Base
 {

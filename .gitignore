@@ -17,6 +17,7 @@ obj*
 *.user
 packages
 .vs/
+BenchmarkDotNet*/
 
 # AoC input
 *.txt

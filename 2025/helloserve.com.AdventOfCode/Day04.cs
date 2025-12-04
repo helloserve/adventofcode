@@ -4,6 +4,7 @@ using BenchmarkDotNet.Jobs;
 namespace helloserve.com.AdventOfCode;
 
 [SimpleJob(RuntimeMoniker.Net80)]
+[SimpleJob(RuntimeMoniker.Net10_0)]
 [MemoryDiagnoser]
 public class Day04 : Base
 {
@@ -49,19 +50,17 @@ public struct Grid
 		Width = width;
 		Height = height;
 
-		List<GridCell> cells = new List<GridCell>();
+		GridCells = new GridCell[width * height];
 		for (int x = 0; x < width; x++)
 		{
 			for (int y = 0; y < height; y++)
 			{
-				cells.Add(new GridCell()
+				GridCells[GetIndex(x, y)] = new GridCell()
 				{
 					HasPaper = char.Equals(grid[GetIndex(x, y)], '@')
-				});
+				};
 			}
 		}
-
-		GridCells = cells.ToArray();
 	}
 
 	private int GetIndex(int x, int y) => (y * Height) + x;
