@@ -8,23 +8,14 @@
     <UseVSTest>true</UseVSTest>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\helloserve.com.AdventOfCode\helloserve.com.AdventOfCode.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<Content Include="*.txt" >
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>			
+		</Content>
+	</ItemGroup>
 
-  <ItemGroup>
-    <None Update="Day01.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="Day04.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="Day03.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="Day02.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\helloserve.com.AdventOfCode\helloserve.com.AdventOfCode.csproj" />
+	</ItemGroup>
 
 </Project>
