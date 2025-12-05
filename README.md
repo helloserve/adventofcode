@@ -42,6 +42,14 @@ CPU: AMD Ryzen 9 4900HS
 | Part1  | .NET 8.0  | .NET 8.0  |   526.6 us | 10.50 us | 17.54 us | 484.3750 |      - | 1016.77 KB |
 | Part2  | .NET 8.0  | .NET 8.0  | 3,641.6 us | 15.85 us | 14.05 us | 484.3750 |      - | 1016.77 KB |
 
+### Day 5
+
+| Method | Job       | Runtime   | Mean       | Error    | StdDev   | Gen0     | Gen1   | Allocated  |
+|------- |---------- |---------- |-----------:|---------:|---------:|---------:|-------:|-----------:|
+| Part1  | .NET 10.0 | .NET 10.0 |   538.2 us | 10.70 us | 25.22 us | 497.0703 | 0.9766 | 1016.78 KB |
+| Part2  | .NET 10.0 | .NET 10.0 | 3,211.6 us | 54.87 us | 48.64 us | 496.0938 | 3.9063 | 1016.78 KB |
+| Part1  | .NET 8.0  | .NET 8.0  |   602.4 us | 11.91 us | 25.12 us | 497.0703 |      - | 1016.77 KB |
+| Part2  | .NET 8.0  | .NET 8.0  | 3,550.0 us | 29.37 us | 26.04 us | 492.1875 |      - | 1016.77 KB |
 
 ## 2016
 Solution was done in .NET Core 1.1.0 and .NET Standard 1.6

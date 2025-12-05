@@ -33,6 +33,13 @@ Console.WriteLine($"Day 04, Part 1: {result}");
 result = day04.Part2();
 Console.WriteLine($"Day 04, Part 2: {result}");
 
+Day05 day05 = new();
+result = day05.Part1();
+Console.WriteLine($"Day 05, Part 1: {result}");
+
+result = day05.Part2();
+Console.WriteLine($"Day 05, Part 2: {result}");
+
 #else
 
 BenchmarkDotNet.Running.BenchmarkRunner.Run<Day01>();
